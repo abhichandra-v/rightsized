@@ -100,5 +100,5 @@ VPA changes the scorer would have held back.
 ## Known simplifications
 
 - Pod-name regex matching can over-match workloads whose names prefix one another (`api` vs `api-gateway`).
-- `unmanaged_pods` (kube-system etc.) are not collected yet, so simulated node counts are slightly optimistic.
+- Pods outside the managed namespaces are counted at their current requests (DaemonSets excluded; they are the node pool's `daemonset_*` overhead).
 - The p99 guardrail compares medians of p99s, not a pooled p99; with 3 runs the test has low power for small regressions.

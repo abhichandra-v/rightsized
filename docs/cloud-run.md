@@ -14,9 +14,11 @@ counts and billing, and **tears everything down**.
 
 ## 1. Cluster
 
-Create with `eksctl` (Karpenter enabled, a small managed node group for system pods only).
-Then add a Karpenter `NodePool` restricted to a single on-demand instance type, so node
-count × price is unambiguous:
+Templates: [`deploy/eks/cluster.yaml`](../deploy/eks/cluster.yaml) (Karpenter enabled, a
+small managed node group for system pods only) and
+[`deploy/eks/karpenter-nodepool.yaml`](../deploy/eks/karpenter-nodepool.yaml). The NodePool is
+restricted to a single on-demand instance type, so node count × price is unambiguous, and it
+has a CPU limit that caps spend:
 
 ```yaml
 apiVersion: karpenter.sh/v1

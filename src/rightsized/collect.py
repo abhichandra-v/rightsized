@@ -89,6 +89,26 @@ def _pdb_covers(pdbs: list[dict], ns: str, labels: dict) -> bool:
     return False
 
 
+def unmanaged_pods(managed_namespaces: list[str]) -> list[Resources]:
+    """Requests of running pods outside the managed namespaces; they still take node space.
+
+    DaemonSet pods are skipped: the node pool's daemonset_cpu/daemonset_memory covers them.
+    """
+    out = []
+    for pod in kubectl_json("get", "pods", "-A", "--field-selector=status.phase=Running")["items"]:
+        if pod["metadata"]["namespace"] in managed_namespaces:
+            continue
+        if any(o.get("kind") == "DaemonSet" for o in pod["metadata"].get("ownerReferences", [])):
+            continue
+        cpu = mem = 0
+        for c in pod["spec"]["containers"]:
+            req = c.get("resources", {}).get("requests", {})
+            cpu += parse_cpu(req.get("cpu")) or 0
+            mem += parse_memory(req.get("memory")) or 0
+        out.append(Resources(cpu=cpu, memory=mem))
+    return out
+
+
 def collect(prom: Prometheus, namespaces: list[str], window: str, cluster: str,
             node_pool: NodePool | None = None) -> Snapshot:
     now = datetime.now(timezone.utc)
@@ -123,7 +143,8 @@ def collect(prom: Prometheus, namespaces: list[str], window: str, cluster: str,
                         criticality=crit,
                     ))
     return Snapshot(cluster=cluster, collected_at=now.isoformat(timespec="seconds"),
-                    window=window, containers=containers, node_pool=node_pool)
+                    window=window, containers=containers, node_pool=node_pool,
+                    unmanaged_pods=unmanaged_pods(namespaces))
 
 
 def node_count(selector: str = "") -> int:

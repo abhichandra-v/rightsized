@@ -1,0 +1,26 @@
+# Short-lived EKS cluster for the cloud run (docs/cloud-run.md). Untested template:
+# check eksctl/Karpenter versions on the day, and tear down the same day.
+#   eksctl create cluster -f deploy/eks/cluster.yaml
+#   kubectl apply -f deploy/eks/karpenter-nodepool.yaml
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: rightsized-run
+  region: us-east-1
+  version: "1.31"
+  tags:
+    project: rightsized-run           # activate as a cost-allocation tag before the run
+iam:
+  withOIDC: true
+karpenter:
+  version: "1.0.6"
+  createServiceAccount: true
+managedNodeGroups:
+  # System pods only (Karpenter, Prometheus, CoreDNS). Boutique runs on Karpenter nodes.
+  - name: system
+    instanceType: m6i.large
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 2
+    labels: { rightsized.io/pool: system }
+    tags: { project: rightsized-run }
