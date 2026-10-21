@@ -1,0 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: boutique
+
+resources:
+  - namespace.yaml
+  # Pinned upstream release, fetched by `make boutique-manifests`.
+  - upstream/kubernetes-manifests.yaml
+  - blast-radius.yaml
+
+# The file rightsized edits. `make reset` restores it from resources.guessed.yaml.
+# (patchesStrategicMerge is deprecated but, unlike `patches`, takes a multi-document file.)
+patchesStrategicMerge:
+  - resources.yaml
+
+patches:
+  # k6 replaces the bundled Locust load generator so baseline and candidate get identical load.
+  - patch: |-
+      $patch: delete
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: loadgenerator
+  - target: { kind: Deployment, name: frontend }
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
+  - target: { kind: Deployment, name: "checkoutservice|paymentservice" }
+    patch: |-
+      - op: add
+        path: /metadata/labels/rightsized.io~1criticality
+        value: critical

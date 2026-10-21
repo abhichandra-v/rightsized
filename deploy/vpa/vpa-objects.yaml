@@ -1,0 +1,145 @@
+# Stock VPA in recommendation-only mode (updateMode: Off) for every Boutique deployment.
+# The head-to-head baseline: deliberately untuned, as most teams would run it.
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: frontend
+  namespace: boutique
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend
+  updatePolicy:
+    updateMode: "Off"
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: cartservice
+  namespace: boutique
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cartservice
+  updatePolicy:
+    updateMode: "Off"
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: productcatalogservice
+  namespace: boutique
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: productcatalogservice
+  updatePolicy:
+    updateMode: "Off"
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: currencyservice
+  namespace: boutique
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: currencyservice
+  updatePolicy:
+    updateMode: "Off"
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: paymentservice
+  namespace: boutique
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: paymentservice
+  updatePolicy:
+    updateMode: "Off"
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: shippingservice
+  namespace: boutique
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: shippingservice
+  updatePolicy:
+    updateMode: "Off"
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: emailservice
+  namespace: boutique
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: emailservice
+  updatePolicy:
+    updateMode: "Off"
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: checkoutservice
+  namespace: boutique
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: checkoutservice
+  updatePolicy:
+    updateMode: "Off"
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: recommendationservice
+  namespace: boutique
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: recommendationservice
+  updatePolicy:
+    updateMode: "Off"
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: adservice
+  namespace: boutique
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: adservice
+  updatePolicy:
+    updateMode: "Off"
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: redis-cart
+  namespace: boutique
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: redis-cart
+  updatePolicy:
+    updateMode: "Off"

@@ -1,0 +1,44 @@
+# Config for `make demo` on kind. See docs/methodology.md for what each knob does.
+prometheus_url: http://localhost:9090
+namespaces: [boutique]
+
+# kind demo uses compressed time: one "day" of diurnal load = DAY_MINUTES (20) wall-clock
+# minutes, and a "week" = 7 such days. The data-confidence thresholds are scaled to match.
+# On a real cluster delete this override and use the defaults (24h minimum, 7d full window).
+window: 150m
+policy:
+  min_window_hours: 0.33        # one compressed day
+  full_window_days: 0.0972      # seven compressed days (140 min)
+  apply_verdicts: [safe]
+
+guardrails:
+  p99_latency_increase_pct: 10
+  error_rate_increase_pp: 0.5
+  max_new_oom_events: 0
+  max_throttle_ratio: 0.10
+
+# Shape and price of the node pool the savings are simulated against. kind nodes have no
+# price, so this describes the pool used in the cloud run (docs/cloud-run.md).
+# Check hourly_usd against the current price list for your region before quoting dollars.
+node_pool:
+  instance_type: m6i.large
+  cpu_allocatable: 1930m
+  memory_allocatable: 7134Mi
+  hourly_usd: 0.096             # us-east-1 Linux on-demand; verify before publishing
+  min_nodes: 1
+  daemonset_cpu: 200m           # aws-node, kube-proxy, node-exporter, ...
+  daemonset_memory: 300Mi
+
+# Where each container's resources live in Git.
+targets:
+  - { workload: boutique/frontend, container: server, file: deploy/boutique/resources.yaml }
+  - { workload: boutique/cartservice, container: server, file: deploy/boutique/resources.yaml }
+  - { workload: boutique/productcatalogservice, container: server, file: deploy/boutique/resources.yaml }
+  - { workload: boutique/currencyservice, container: server, file: deploy/boutique/resources.yaml }
+  - { workload: boutique/paymentservice, container: server, file: deploy/boutique/resources.yaml }
+  - { workload: boutique/shippingservice, container: server, file: deploy/boutique/resources.yaml }
+  - { workload: boutique/emailservice, container: server, file: deploy/boutique/resources.yaml }
+  - { workload: boutique/checkoutservice, container: server, file: deploy/boutique/resources.yaml }
+  - { workload: boutique/recommendationservice, container: server, file: deploy/boutique/resources.yaml }
+  - { workload: boutique/adservice, container: server, file: deploy/boutique/resources.yaml }
+  - { workload: boutique/redis-cart, container: redis, file: deploy/boutique/resources.yaml }

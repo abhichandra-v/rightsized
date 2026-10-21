@@ -1,0 +1,20 @@
+# PDBs on two services so the risk scorer sees a mix of protected and unprotected workloads.
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: frontend
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: frontend
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: checkoutservice
+spec:
+  maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: checkoutservice

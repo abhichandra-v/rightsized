@@ -1,0 +1,191 @@
+# "Developer-guessed" requests: round numbers, copy-pasted between services, mostly too
+# big, with two deliberate under-sizings:
+#   - adservice (Java) has a memory limit close to its heap, so it should OOM under load.
+#   - currencyservice has a 100m CPU limit on the hottest call path, so it should throttle.
+# rightsized edits resources.yaml; `make reset` copies this file back over it.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cartservice
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productcatalogservice
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currencyservice
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
+            limits:
+              cpu: 100m
+              memory: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paymentservice
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shippingservice
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emailservice
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkoutservice
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendationservice
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adservice
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: "1"
+              memory: 192Mi
+            limits:
+              cpu: "1"
+              memory: 192Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-cart
+spec:
+  template:
+    spec:
+      containers:
+        - name: redis
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi

@@ -1,0 +1,9 @@
+# Offline demo: default (real-cluster) policy against the SYNTHETIC fixture.
+node_pool:
+  instance_type: m6i.large
+  cpu_allocatable: 1930m
+  memory_allocatable: 7134Mi
+  hourly_usd: 0.096
+  min_nodes: 1
+  daemonset_cpu: 200m
+  daemonset_memory: 300Mi

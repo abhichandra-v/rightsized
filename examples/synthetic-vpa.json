@@ -1,0 +1,279 @@
+{
+  "items": [
+    {
+      "metadata": {
+        "name": "frontend",
+        "namespace": "boutique"
+      },
+      "spec": {
+        "targetRef": {
+          "kind": "Deployment",
+          "name": "frontend"
+        }
+      },
+      "status": {
+        "recommendation": {
+          "containerRecommendations": [
+            {
+              "containerName": "server",
+              "target": {
+                "cpu": "163m",
+                "memory": "262144k"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "cartservice",
+        "namespace": "boutique"
+      },
+      "spec": {
+        "targetRef": {
+          "kind": "Deployment",
+          "name": "cartservice"
+        }
+      },
+      "status": {
+        "recommendation": {
+          "containerRecommendations": [
+            {
+              "containerName": "server",
+              "target": {
+                "cpu": "93m",
+                "memory": "262144k"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "productcatalogservice",
+        "namespace": "boutique"
+      },
+      "spec": {
+        "targetRef": {
+          "kind": "Deployment",
+          "name": "productcatalogservice"
+        }
+      },
+      "status": {
+        "recommendation": {
+          "containerRecommendations": [
+            {
+              "containerName": "server",
+              "target": {
+                "cpu": "109m",
+                "memory": "262144k"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "currencyservice",
+        "namespace": "boutique"
+      },
+      "spec": {
+        "targetRef": {
+          "kind": "Deployment",
+          "name": "currencyservice"
+        }
+      },
+      "status": {
+        "recommendation": {
+          "containerRecommendations": [
+            {
+              "containerName": "server",
+              "target": {
+                "cpu": "93m",
+                "memory": "262144k"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "paymentservice",
+        "namespace": "boutique"
+      },
+      "spec": {
+        "targetRef": {
+          "kind": "Deployment",
+          "name": "paymentservice"
+        }
+      },
+      "status": {
+        "recommendation": {
+          "containerRecommendations": [
+            {
+              "containerName": "server",
+              "target": {
+                "cpu": "25m",
+                "memory": "262144k"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "shippingservice",
+        "namespace": "boutique"
+      },
+      "spec": {
+        "targetRef": {
+          "kind": "Deployment",
+          "name": "shippingservice"
+        }
+      },
+      "status": {
+        "recommendation": {
+          "containerRecommendations": [
+            {
+              "containerName": "server",
+              "target": {
+                "cpu": "25m",
+                "memory": "262144k"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "emailservice",
+        "namespace": "boutique"
+      },
+      "spec": {
+        "targetRef": {
+          "kind": "Deployment",
+          "name": "emailservice"
+        }
+      },
+      "status": {
+        "recommendation": {
+          "containerRecommendations": [
+            {
+              "containerName": "server",
+              "target": {
+                "cpu": "35m",
+                "memory": "262144k"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "checkoutservice",
+        "namespace": "boutique"
+      },
+      "spec": {
+        "targetRef": {
+          "kind": "Deployment",
+          "name": "checkoutservice"
+        }
+      },
+      "status": {
+        "recommendation": {
+          "containerRecommendations": [
+            {
+              "containerName": "server",
+              "target": {
+                "cpu": "63m",
+                "memory": "262144k"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "recommendationservice",
+        "namespace": "boutique"
+      },
+      "spec": {
+        "targetRef": {
+          "kind": "Deployment",
+          "name": "recommendationservice"
+        }
+      },
+      "status": {
+        "recommendation": {
+          "containerRecommendations": [
+            {
+              "containerName": "server",
+              "target": {
+                "cpu": "143m",
+                "memory": "262144k"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "adservice",
+        "namespace": "boutique"
+      },
+      "spec": {
+        "targetRef": {
+          "kind": "Deployment",
+          "name": "adservice"
+        }
+      },
+      "status": {
+        "recommendation": {
+          "containerRecommendations": [
+            {
+              "containerName": "server",
+              "target": {
+                "cpu": "143m",
+                "memory": "262144k"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "redis-cart",
+        "namespace": "boutique"
+      },
+      "spec": {
+        "targetRef": {
+          "kind": "Deployment",
+          "name": "redis-cart"
+        }
+      },
+      "status": {
+        "recommendation": {
+          "containerRecommendations": [
+            {
+              "containerName": "redis",
+              "target": {
+                "cpu": "25m",
+                "memory": "262144k"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
