@@ -16,6 +16,7 @@ guardrails:
   p99_latency_increase_pct: 10
   error_rate_increase_pp: 0.5
   max_new_oom_events: 0
+  max_new_restarts: 0
   max_throttle_ratio: 0.10
 
 # Shape and price of the node pool the savings are simulated against. kind nodes have no

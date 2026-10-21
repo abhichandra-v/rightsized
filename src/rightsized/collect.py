@@ -147,6 +147,17 @@ def collect(prom: Prometheus, namespaces: list[str], window: str, cluster: str,
                     unmanaged_pods=unmanaged_pods(namespaces))
 
 
+def unavailable_deployments(namespaces: list[str]) -> list[str]:
+    """Deployments with fewer available replicas than desired, e.g. stuck in CrashLoopBackOff."""
+    out = []
+    for ns in namespaces:
+        for d in kubectl_json("get", "deployments", "-n", ns)["items"]:
+            want = d["spec"].get("replicas", 1)
+            if d.get("status", {}).get("availableReplicas", 0) < want:
+                out.append(f"{ns}/{d['metadata']['name']}")
+    return out
+
+
 def node_count(selector: str = "") -> int:
     args = ["get", "nodes"] + (["-l", selector] if selector else [])
     return len(kubectl_json(*args)["items"])

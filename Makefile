@@ -107,9 +107,12 @@ pr:
 reset:
 	cp deploy/boutique/resources.guessed.yaml deploy/boutique/resources.yaml
 
+# A rollout that never finishes (crash loop, unschedulable) is recorded and left for verify's
+# "restarts" and "not available" guardrails to judge; it does not abort the pipeline.
 apply:
 	kubectl apply -k deploy/boutique
-	kubectl -n $(NS) rollout status deploy --timeout=10m
+	kubectl -n $(NS) rollout status deploy --timeout=5m || echo "rollout incomplete after 5m"
+	kubectl -n $(NS) get pods -o wide
 	sleep 120
 
 baseline: reset apply

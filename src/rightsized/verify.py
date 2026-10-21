@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import json
 import statistics
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from .config import Guardrails
@@ -21,6 +21,8 @@ class RunMetrics:
     error_rate: float  # 0..1
     oom_events: int = 0
     max_throttle_ratio: float = 0.0
+    restarts: int = 0
+    unavailable: list[str] = field(default_factory=list)  # deployments not fully available
     nodes: int | None = None
 
     @classmethod
@@ -38,6 +40,8 @@ class RunMetrics:
             error_rate=rate,
             oom_events=int(c.get("oom_events", 0)),
             max_throttle_ratio=float(c.get("max_throttle_ratio", 0.0)),
+            restarts=int(c.get("restarts", 0)),
+            unavailable=list(c.get("unavailable_deployments", [])),
             nodes=c.get("nodes"),
         )
 
@@ -66,7 +70,10 @@ def verify(baseline: list[RunMetrics], candidate: list[RunMetrics], g: Guardrail
         raise ValueError("need at least one baseline and one candidate run")
     b_p99, c_p99 = _median(baseline, "p99_ms"), _median(candidate, "p99_ms")
     b_err, c_err = _median(baseline, "error_rate"), _median(candidate, "error_rate")
-    c_oom = max(r.oom_events for r in candidate)
+    b_oom, c_oom = max(r.oom_events for r in baseline), max(r.oom_events for r in candidate)
+    b_rst = max(r.restarts for r in baseline)
+    c_rst = max(r.restarts for r in candidate)
+    c_unavail = sorted({d for r in candidate for d in r.unavailable})
     b_thr, c_thr = _median(baseline, "max_throttle_ratio"), _median(candidate, "max_throttle_ratio")
 
     p99_limit = b_p99 * (1 + g.p99_latency_increase_pct / 100)
@@ -78,8 +85,13 @@ def verify(baseline: list[RunMetrics], candidate: list[RunMetrics], g: Guardrail
         Check("error rate", b_err, c_err, err_limit,
               f"{_spread(baseline, 'error_rate', '.2%')} vs {_spread(candidate, 'error_rate', '.2%')}",
               c_err <= err_limit),
-        Check("OOM events during run", max(r.oom_events for r in baseline), c_oom, g.max_new_oom_events,
-              "", c_oom <= g.max_new_oom_events),
+        # Limits are relative to the baseline: the change is judged only on what it made worse.
+        Check("OOM events during run", b_oom, c_oom, b_oom + g.max_new_oom_events,
+              "", c_oom <= b_oom + g.max_new_oom_events),
+        Check("container restarts during run", b_rst, c_rst, b_rst + g.max_new_restarts,
+              "", c_rst <= b_rst + g.max_new_restarts),
+        Check("deployments not available", max(len(r.unavailable) for r in baseline), len(c_unavail), 0,
+              ", ".join(c_unavail), not c_unavail),
         Check("max container throttle ratio", b_thr, c_thr, thr_limit,
               f"{_spread(baseline, 'max_throttle_ratio', '.1%')} vs {_spread(candidate, 'max_throttle_ratio', '.1%')}",
               c_thr <= thr_limit),
@@ -97,7 +109,7 @@ def render(checks: list[Check]) -> str:
     def fmt(name: str, v: float) -> str:
         if "rate" in name or "ratio" in name:
             return f"{v:.2%}"
-        return f"{v:.0f}" if "OOM" in name else f"{v:.1f}"
+        return f"{v:.1f}" if "ms" in name else f"{v:.0f}"
 
     rows = ["| Guardrail | Baseline | Candidate | Limit | Run spread (base vs cand) | Result |",
             "|---|---|---|---|---|---|"]

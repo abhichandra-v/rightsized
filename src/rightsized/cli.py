@@ -91,7 +91,7 @@ def cmd_pr(args, cfg: Config) -> int:
 
 
 def cmd_capture(args, cfg: Config) -> int:
-    from .collect import Prometheus, node_count
+    from .collect import Prometheus, node_count, unavailable_deployments
 
     prom = Prometheus(cfg.prometheus_url)
     ns = "|".join(cfg.namespaces)
@@ -103,6 +103,9 @@ def cmd_capture(args, cfg: Config) -> int:
             f'max(sum by (namespace, pod, container) (increase(container_cpu_cfs_throttled_periods_total'
             f'{{namespace=~"{ns}"}}[{d}])) / sum by (namespace, pod, container) '
             f'(increase(container_cpu_cfs_periods_total{{namespace=~"{ns}"}}[{d}])))'),
+        "restarts": int(round(prom.scalar(
+            f'sum(increase(kube_pod_container_status_restarts_total{{namespace=~"{ns}"}}[{d}])) or vector(0)'))),
+        "unavailable_deployments": unavailable_deployments(cfg.namespaces),
         "nodes": node_count(args.node_selector),
     }
     Path(args.out).write_text(json.dumps(out, indent=2) + "\n")
@@ -125,7 +128,7 @@ def cmd_verify(args, cfg: Config) -> int:
     nodes = verify.node_change(base, cand)
     if nodes:
         before, after = nodes
-        md += f"\nNodes (measured, median across runs): {before} → {after}"
+        md += f"\nNodes (median across runs; only meaningful with an autoscaler): {before} → {after}"
         if cfg.node_pool:
             usd = (before - after) * cfg.node_pool.hourly_usd * savings.HOURS_PER_MONTH
             md += f" ≈ ${usd:,.2f}/mo at {cfg.node_pool.instance_type} pricing"

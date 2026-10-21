@@ -63,6 +63,7 @@ class Guardrails:
     p99_latency_increase_pct: float = 10.0
     error_rate_increase_pp: float = 0.5
     max_new_oom_events: int = 0
+    max_new_restarts: int = 0  # liveness kills and crash loops, not just OOMs
     max_throttle_ratio: float = 0.10
 
 

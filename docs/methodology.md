@@ -84,7 +84,9 @@ compares **medians** and prints the min–max spread so a reader can judge noise
 |---|---|
 | p99 latency | ≤ baseline + 10% |
 | Error rate | ≤ baseline + 0.5 pp |
-| OOM events during candidate runs | 0 |
+| OOM events during candidate runs | ≤ baseline (no new OOMs) |
+| Container restarts during candidate runs | ≤ baseline (catches liveness kills and crash loops) |
+| Deployments not fully available | 0 |
 | Max container throttle ratio | ≤ max(10%, baseline) |
 
 Any failure → exit 1 → `make verify` restores the previous values and re-applies.
