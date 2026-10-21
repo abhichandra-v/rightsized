@@ -39,7 +39,7 @@ def test_pr_patches_demo_resources_file(tmp_path):
     assert main(["-c", str(cfg), "pr", str(SNAP), "--repo", str(repo), "--body-out", str(body)]) == 0
     patched = (repo / "deploy" / "boutique" / "resources.yaml").read_text()
     assert "cpu: 165m" in patched  # frontend: safe, applied
-    assert "memory: 192Mi" in patched  # adservice: don't touch, left as guessed
+    assert patched.count("memory: 256Mi") >= 2  # adservice: don't touch, request+limit left as guessed
     assert "deliberate under-sizings" in patched  # header comment survives
     text = body.read_text()
     assert "Applied in this PR" in text and "Not applied" in text and "Savings" in text

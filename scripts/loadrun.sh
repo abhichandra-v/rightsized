@@ -11,7 +11,7 @@ mkdir -p "$out"
 
 for i in $(seq 1 "$runs"); do
   echo "== ${label}: run ${i}/${runs} (${day} min)"
-  SUMMARY="${out}/run${i}.json" DAY_MINUTES="$day" k6 run --quiet loadtest/diurnal.js
+  SUMMARY="${out}/run${i}.json" DAY_MINUTES="$day" k6 run --summary-trend-stats "avg,p(50),p(95),p(99),max" --quiet loadtest/diurnal.js
   # Range slightly wider than the run so the last scrape is included.
   rightsized capture --duration "$((day + 1))m" --node-selector "${NODE_SELECTOR:-}" --out "${out}/run${i}.cluster.json"
   # Let the trough settle so runs don't overlap in Prometheus' rate windows.

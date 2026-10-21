@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from dataclasses import replace
 from pathlib import Path
@@ -157,7 +158,7 @@ def cmd_compare(args, cfg: Config) -> int:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="rightsized", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("-c", "--config", default="rightsized.yaml")
+    ap.add_argument("-c", "--config", default=os.environ.get("RIGHTSIZED_CONFIG", "rightsized.yaml"))
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     p = sub.add_parser("collect", help="snapshot usage + spec from a live cluster")

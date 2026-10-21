@@ -21,13 +21,35 @@ patches:
       kind: Deployment
       metadata:
         name: loadgenerator
-  - target: { kind: Deployment, name: frontend }
-    patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 2
-  - target: { kind: Deployment, name: "checkoutservice|paymentservice" }
-    patch: |-
-      - op: add
-        path: /metadata/labels/rightsized.io~1criticality
-        value: critical
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: frontend
+      spec:
+        replicas: 2
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: checkoutservice
+        labels: { rightsized.io/criticality: critical }
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: paymentservice
+        labels: { rightsized.io/criticality: critical }
+  # Fixed NodePort so k6 reaches the frontend through kind's port mapping (see deploy/kind).
+  - patch: |-
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: frontend-external
+      spec:
+        type: NodePort
+        ports:
+          - name: http
+            port: 80
+            targetPort: 8080
+            nodePort: 30080

@@ -5,6 +5,10 @@ alertmanager:
 grafana:
   enabled: false
 prometheus:
+  # Fixed NodePort, mapped to localhost:9090 by deploy/kind/cluster.yaml.
+  service:
+    type: NodePort
+    nodePort: 30090
   prometheusSpec:
     scrapeInterval: 15s
     retention: 15d

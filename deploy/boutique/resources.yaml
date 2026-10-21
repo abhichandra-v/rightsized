@@ -1,6 +1,6 @@
 # "Developer-guessed" requests: round numbers, copy-pasted between services, mostly too
 # big, with two deliberate under-sizings:
-#   - adservice (Java) has a memory limit close to its heap, so it should OOM under load.
+#   - adservice (Java) has a 256Mi memory limit, below upstream's 300Mi, so it may OOM under load.
 #   - currencyservice has a 100m CPU limit on the hottest call path, so it should throttle.
 # rightsized edits resources.yaml; `make reset` copies this file back over it.
 apiVersion: apps/v1
@@ -168,10 +168,10 @@ spec:
           resources:
             requests:
               cpu: "1"
-              memory: 192Mi
+              memory: 256Mi
             limits:
               cpu: "1"
-              memory: 192Mi
+              memory: 256Mi
 ---
 apiVersion: apps/v1
 kind: Deployment

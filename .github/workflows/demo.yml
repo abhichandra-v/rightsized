@@ -1,0 +1,52 @@
+name: demo
+# End-to-end run on kind: observe -> PR -> baseline -> apply -> candidate -> verify -> VPA arm.
+# Everything it produces is uploaded as the `results` artifact.
+on:
+  workflow_dispatch:
+    inputs:
+      day_minutes: { description: "Wall-clock minutes per compressed day", default: "10" }
+      observe_days: { description: "Compressed days of observation", default: "7" }
+      runs: { description: "Load-test runs per arm", default: "3" }
+      peak_rps: { description: "k6 iterations/s at the daily peak", default: "20" }
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      DAY_MINUTES: ${{ inputs.day_minutes }}
+      OBSERVE_DAYS: ${{ inputs.observe_days }}
+      RUNS: ${{ inputs.runs }}
+      PEAK_RPS: ${{ inputs.peak_rps }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -e '.[dev]'
+      - uses: helm/kind-action@v1
+        with: { install_only: true, version: v0.24.0 }
+      - uses: azure/setup-helm@v4
+        with: { version: v3.16.2 }
+      - uses: grafana/setup-k6-action@v1
+        with: { k6-version: "0.54.0" }
+
+      - name: Record environment
+        run: |
+          mkdir -p results
+          { echo "runner: $(nproc) vCPU, $(free -g | awk '/Mem/{print $2}') GiB"; uname -a; kind version; helm version --short; k6 version;
+            echo "inputs: day=${DAY_MINUTES}m observe=${OBSERVE_DAYS} runs=${RUNS} peak_rps=${PEAK_RPS}"; git rev-parse HEAD; } | tee results/environment.txt
+
+      - name: Demo
+        run: make demo
+
+      - name: Cluster state on exit
+        if: always()
+        run: |
+          kubectl get nodes -o wide > results/nodes.txt 2>&1 || true
+          kubectl -n boutique get pods -o wide > results/pods.txt 2>&1 || true
+          kubectl -n boutique get events --sort-by=.lastTimestamp > results/events.txt 2>&1 || true
+          kubectl get vpa -n boutique -o yaml > results/vpa-final.yaml 2>&1 || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: results, path: results/ }

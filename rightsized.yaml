@@ -4,11 +4,12 @@ namespaces: [boutique]
 
 # kind demo uses compressed time: one "day" of diurnal load = DAY_MINUTES (20) wall-clock
 # minutes, and a "week" = 7 such days. The data-confidence thresholds are scaled to match.
+# `make demo` regenerates window/policy for other DAY_MINUTES (scripts/demo_config.py).
 # On a real cluster delete this override and use the defaults (24h minimum, 7d full window).
 window: 150m
 policy:
   min_window_hours: 0.33        # one compressed day
-  full_window_days: 0.0972      # seven compressed days (140 min)
+  full_window_days: 0.0972      # seven compressed days
   apply_verdicts: [safe]
 
 guardrails:

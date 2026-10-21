@@ -14,14 +14,18 @@ BOUTIQUE_VERSION ?= v0.10.2
 DAY_MINUTES      ?= 20
 OBSERVE_DAYS     ?= 7
 RUNS             ?= 3
+PEAK_RPS         ?= 40
 NS               := boutique
-export DAY_MINUTES RUNS
+RESULTS          := results
+# Compressed-time config derived from rightsized.yaml (see scripts/demo_config.py).
+CONFIG           ?= $(RESULTS)/rightsized.demo.yaml
+RIGHTSIZED_CONFIG = $(CONFIG)
+export DAY_MINUTES RUNS PEAK_RPS OBSERVE_DAYS RIGHTSIZED_CONFIG
 
 RS := rightsized
-RESULTS := results
 
 .PHONY: help install test offline-demo demo cluster monitoring vpa boutique-manifests boutique \
-        forward unforward observe collect analyze pr reset apply baseline candidate verify \
+        metrics-server config wait-endpoints observe collect analyze pr reset apply baseline candidate verify \
         vpa-arm compare clean
 
 help:
@@ -49,7 +53,12 @@ monitoring:
 	helm upgrade --install kps prometheus-community/kube-prometheus-stack -n monitoring --create-namespace \
 	  -f deploy/monitoring/values.yaml --wait
 
-vpa:
+metrics-server:
+	helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server >/dev/null
+	helm upgrade --install metrics-server metrics-server/metrics-server -n kube-system \
+	  --set 'args={--kubelet-insecure-tls}' --wait
+
+vpa: metrics-server
 	helm repo add fairwinds-stable https://charts.fairwinds.com/stable >/dev/null
 	helm upgrade --install vpa fairwinds-stable/vpa -n vpa --create-namespace \
 	  --set updater.enabled=false --set admissionController.enabled=false --wait
@@ -62,15 +71,19 @@ boutique-manifests:
 boutique: boutique-manifests
 	kubectl apply -k deploy/boutique
 	kubectl apply -f deploy/vpa/vpa-objects.yaml
-	kubectl -n $(NS) wait --for=condition=available deploy --all --timeout=10m
+	@# Not fatal: an under-sized service that never gets Ready is a finding, not a setup error.
+	-kubectl -n $(NS) wait --for=condition=available deploy --all --timeout=10m
+	kubectl -n $(NS) get pods -o wide
 
-forward:
-	@kubectl -n $(NS) port-forward svc/frontend 8080:80 >/dev/null 2>&1 & echo $$! > .pf-frontend
-	@kubectl -n monitoring port-forward svc/kps-kube-prometheus-stack-prometheus 9090:9090 >/dev/null 2>&1 & echo $$! > .pf-prom
-	@sleep 3
+config:
+	@mkdir -p $(RESULTS)
+	python scripts/demo_config.py $(CONFIG)
 
-unforward:
-	-@kill $$(cat .pf-frontend .pf-prom 2>/dev/null) 2>/dev/null; rm -f .pf-frontend .pf-prom
+# Frontend and Prometheus are NodePorts mapped to localhost by deploy/kind/cluster.yaml.
+wait-endpoints:
+	@for i in $$(seq 1 60); do curl -fs -o /dev/null localhost:8080/ && break; sleep 5; done
+	@for i in $$(seq 1 60); do curl -fs -o /dev/null localhost:9090/-/ready && break; sleep 5; done
+	@echo "frontend and prometheus reachable"
 
 # ---------- observe -> recommend -> PR ----------
 
@@ -125,10 +138,10 @@ compare:
 	$(RS) compare $(RESULTS)/snapshot.json --vpa $(RESULTS)/vpa.json | tee $(RESULTS)/compare.md
 
 # A failed verify rolls back but must not stop the VPA arm: the comparison needs both.
-demo: cluster monitoring vpa boutique forward observe collect analyze baseline candidate
+demo: config cluster monitoring vpa boutique wait-endpoints observe collect analyze baseline candidate
 	-$(MAKE) verify
 	$(MAKE) vpa-arm compare
 	@echo "Done. Everything is in $(RESULTS)/ ; commit it alongside the write-up."
 
-clean: unforward
+clean:
 	kind delete cluster --name rightsized
