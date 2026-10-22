@@ -91,7 +91,7 @@ def cmd_pr(args, cfg: Config) -> int:
 
 
 def cmd_capture(args, cfg: Config) -> int:
-    from .collect import Prometheus, node_count, unavailable_deployments
+    from .collect import Prometheus, node_count, top_by_container, unavailable_deployments
 
     prom = Prometheus(cfg.prometheus_url)
     ns = "|".join(cfg.namespaces)
@@ -107,6 +107,14 @@ def cmd_capture(args, cfg: Config) -> int:
             f'sum(increase(kube_pod_container_status_restarts_total{{namespace=~"{ns}"}}[{d}])) or vector(0)'))),
         "unavailable_deployments": unavailable_deployments(cfg.namespaces),
         "nodes": node_count(args.node_selector),
+        # Attribution only; the guardrails use the totals above.
+        "top_throttled": top_by_container(prom,
+            f'sum by (namespace, pod, container) (increase(container_cpu_cfs_throttled_periods_total'
+            f'{{namespace=~"{ns}",container!=""}}[{d}])) / sum by (namespace, pod, container) '
+            f'(increase(container_cpu_cfs_periods_total{{namespace=~"{ns}",container!=""}}[{d}]))'),
+        "top_restarts": top_by_container(prom,
+            f'sum by (namespace, pod, container) (increase(kube_pod_container_status_restarts_total'
+            f'{{namespace=~"{ns}"}}[{d}]))'),
     }
     Path(args.out).write_text(json.dumps(out, indent=2) + "\n")
     print(json.dumps(out))

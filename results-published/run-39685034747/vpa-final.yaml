@@ -1,0 +1,445 @@
+apiVersion: v1
+items:
+- apiVersion: autoscaling.k8s.io/v1
+  kind: VerticalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling.k8s.io/v1","kind":"VerticalPodAutoscaler","metadata":{"annotations":{},"name":"adservice","namespace":"boutique"},"spec":{"targetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"adservice"},"updatePolicy":{"updateMode":"Off"}}}
+    creationTimestamp: "2026-10-21T22:16:35Z"
+    generation: 1
+    name: adservice
+    namespace: boutique
+    resourceVersion: "25630"
+    uid: a2d3b30b-125b-4552-b9f2-6b498d68a74f
+  spec:
+    targetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: adservice
+    updatePolicy:
+      updateMode: "Off"
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-21T22:17:32Z"
+      status: "True"
+      type: RecommendationProvided
+    observedGeneration: 1
+    recommendation:
+      containerRecommendations:
+      - containerName: server
+        lowerBound:
+          cpu: 15m
+          memory: 100Mi
+        target:
+          cpu: 23m
+          memory: "126805489"
+        uncappedTarget:
+          cpu: 23m
+          memory: "126805489"
+        upperBound:
+          cpu: 294m
+          memory: "1068122977"
+- apiVersion: autoscaling.k8s.io/v1
+  kind: VerticalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling.k8s.io/v1","kind":"VerticalPodAutoscaler","metadata":{"annotations":{},"name":"cartservice","namespace":"boutique"},"spec":{"targetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"cartservice"},"updatePolicy":{"updateMode":"Off"}}}
+    creationTimestamp: "2026-10-21T22:16:35Z"
+    generation: 1
+    name: cartservice
+    namespace: boutique
+    resourceVersion: "25626"
+    uid: 90186fb9-5ab6-4cc4-b81b-5295014d1df2
+  spec:
+    targetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: cartservice
+    updatePolicy:
+      updateMode: "Off"
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-21T22:17:32Z"
+      status: "True"
+      type: RecommendationProvided
+    observedGeneration: 1
+    recommendation:
+      containerRecommendations:
+      - containerName: server
+        lowerBound:
+          cpu: 34m
+          memory: 100Mi
+        target:
+          cpu: 49m
+          memory: 100Mi
+        uncappedTarget:
+          cpu: 49m
+          memory: 100Mi
+        upperBound:
+          cpu: 530m
+          memory: "658639425"
+- apiVersion: autoscaling.k8s.io/v1
+  kind: VerticalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling.k8s.io/v1","kind":"VerticalPodAutoscaler","metadata":{"annotations":{},"name":"checkoutservice","namespace":"boutique"},"spec":{"targetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"checkoutservice"},"updatePolicy":{"updateMode":"Off"}}}
+    creationTimestamp: "2026-10-21T22:16:35Z"
+    generation: 1
+    name: checkoutservice
+    namespace: boutique
+    resourceVersion: "25623"
+    uid: c9ba4970-d2b3-451e-9774-d54568ced9aa
+  spec:
+    targetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: checkoutservice
+    updatePolicy:
+      updateMode: "Off"
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-21T22:17:32Z"
+      status: "True"
+      type: RecommendationProvided
+    observedGeneration: 1
+    recommendation:
+      containerRecommendations:
+      - containerName: server
+        lowerBound:
+          cpu: 15m
+          memory: 100Mi
+        target:
+          cpu: 15m
+          memory: 100Mi
+        uncappedTarget:
+          cpu: 15m
+          memory: 100Mi
+        upperBound:
+          cpu: 93m
+          memory: "199471356"
+- apiVersion: autoscaling.k8s.io/v1
+  kind: VerticalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling.k8s.io/v1","kind":"VerticalPodAutoscaler","metadata":{"annotations":{},"name":"currencyservice","namespace":"boutique"},"spec":{"targetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"currencyservice"},"updatePolicy":{"updateMode":"Off"}}}
+    creationTimestamp: "2026-10-21T22:16:35Z"
+    generation: 1
+    name: currencyservice
+    namespace: boutique
+    resourceVersion: "25631"
+    uid: 98dc9502-3065-4d51-b294-b56f44c49c37
+  spec:
+    targetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: currencyservice
+    updatePolicy:
+      updateMode: "Off"
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-21T22:17:32Z"
+      status: "True"
+      type: RecommendationProvided
+    observedGeneration: 1
+    recommendation:
+      containerRecommendations:
+      - containerName: server
+        lowerBound:
+          cpu: 34m
+          memory: 100Mi
+        target:
+          cpu: 63m
+          memory: "109814751"
+        uncappedTarget:
+          cpu: 63m
+          memory: "109814751"
+        upperBound:
+          cpu: 530m
+          memory: "924374717"
+- apiVersion: autoscaling.k8s.io/v1
+  kind: VerticalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling.k8s.io/v1","kind":"VerticalPodAutoscaler","metadata":{"annotations":{},"name":"emailservice","namespace":"boutique"},"spec":{"targetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"emailservice"},"updatePolicy":{"updateMode":"Off"}}}
+    creationTimestamp: "2026-10-21T22:16:35Z"
+    generation: 1
+    name: emailservice
+    namespace: boutique
+    resourceVersion: "25627"
+    uid: 356a9b96-08be-42fc-abba-fb8df395360f
+  spec:
+    targetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: emailservice
+    updatePolicy:
+      updateMode: "Off"
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-21T22:17:32Z"
+      status: "True"
+      type: RecommendationProvided
+    observedGeneration: 1
+    recommendation:
+      containerRecommendations:
+      - containerName: server
+        lowerBound:
+          cpu: 15m
+          memory: 100Mi
+        target:
+          cpu: 15m
+          memory: 100Mi
+        uncappedTarget:
+          cpu: 15m
+          memory: 100Mi
+        upperBound:
+          cpu: 92m
+          memory: "535136159"
+- apiVersion: autoscaling.k8s.io/v1
+  kind: VerticalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling.k8s.io/v1","kind":"VerticalPodAutoscaler","metadata":{"annotations":{},"name":"frontend","namespace":"boutique"},"spec":{"targetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"frontend"},"updatePolicy":{"updateMode":"Off"}}}
+    creationTimestamp: "2026-10-21T22:16:35Z"
+    generation: 1
+    name: frontend
+    namespace: boutique
+    resourceVersion: "25628"
+    uid: f03507a7-1d31-46b1-b16b-8d19c298df3d
+  spec:
+    targetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: frontend
+    updatePolicy:
+      updateMode: "Off"
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-21T22:17:32Z"
+      status: "True"
+      type: RecommendationProvided
+    observedGeneration: 1
+    recommendation:
+      containerRecommendations:
+      - containerName: server
+        lowerBound:
+          cpu: 34m
+          memory: 100Mi
+        target:
+          cpu: 78m
+          memory: 100Mi
+        uncappedTarget:
+          cpu: 78m
+          memory: 100Mi
+        upperBound:
+          cpu: 656m
+          memory: "198384457"
+- apiVersion: autoscaling.k8s.io/v1
+  kind: VerticalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling.k8s.io/v1","kind":"VerticalPodAutoscaler","metadata":{"annotations":{},"name":"paymentservice","namespace":"boutique"},"spec":{"targetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"paymentservice"},"updatePolicy":{"updateMode":"Off"}}}
+    creationTimestamp: "2026-10-21T22:16:35Z"
+    generation: 1
+    name: paymentservice
+    namespace: boutique
+    resourceVersion: "25629"
+    uid: d9f709ba-d76c-4b99-8b67-916e49b160b1
+  spec:
+    targetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: paymentservice
+    updatePolicy:
+      updateMode: "Off"
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-21T22:17:32Z"
+      status: "True"
+      type: RecommendationProvided
+    observedGeneration: 1
+    recommendation:
+      containerRecommendations:
+      - containerName: server
+        lowerBound:
+          cpu: 15m
+          memory: 100Mi
+        target:
+          cpu: 15m
+          memory: 100Mi
+        uncappedTarget:
+          cpu: 15m
+          memory: 100Mi
+        upperBound:
+          cpu: 92m
+          memory: "788581940"
+- apiVersion: autoscaling.k8s.io/v1
+  kind: VerticalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling.k8s.io/v1","kind":"VerticalPodAutoscaler","metadata":{"annotations":{},"name":"productcatalogservice","namespace":"boutique"},"spec":{"targetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"productcatalogservice"},"updatePolicy":{"updateMode":"Off"}}}
+    creationTimestamp: "2026-10-21T22:16:35Z"
+    generation: 1
+    name: productcatalogservice
+    namespace: boutique
+    resourceVersion: "25624"
+    uid: 0edf38db-817b-4d99-a875-e653a87e87e2
+  spec:
+    targetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: productcatalogservice
+    updatePolicy:
+      updateMode: "Off"
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-21T22:17:32Z"
+      status: "True"
+      type: RecommendationProvided
+    observedGeneration: 1
+    recommendation:
+      containerRecommendations:
+      - containerName: server
+        lowerBound:
+          cpu: 22m
+          memory: 100Mi
+        target:
+          cpu: 63m
+          memory: 100Mi
+        uncappedTarget:
+          cpu: 63m
+          memory: 100Mi
+        upperBound:
+          cpu: 533m
+          memory: "199471356"
+- apiVersion: autoscaling.k8s.io/v1
+  kind: VerticalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling.k8s.io/v1","kind":"VerticalPodAutoscaler","metadata":{"annotations":{},"name":"recommendationservice","namespace":"boutique"},"spec":{"targetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"recommendationservice"},"updatePolicy":{"updateMode":"Off"}}}
+    creationTimestamp: "2026-10-21T22:16:35Z"
+    generation: 1
+    name: recommendationservice
+    namespace: boutique
+    resourceVersion: "25625"
+    uid: 2f54af4e-bf4e-4d1d-a09a-624e8ac00910
+  spec:
+    targetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: recommendationservice
+    updatePolicy:
+      updateMode: "Off"
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-21T22:17:32Z"
+      status: "True"
+      type: RecommendationProvided
+    observedGeneration: 1
+    recommendation:
+      containerRecommendations:
+      - containerName: server
+        lowerBound:
+          cpu: 22m
+          memory: 100Mi
+        target:
+          cpu: 35m
+          memory: 100Mi
+        uncappedTarget:
+          cpu: 35m
+          memory: 100Mi
+        upperBound:
+          cpu: 295m
+          memory: "535744559"
+- apiVersion: autoscaling.k8s.io/v1
+  kind: VerticalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling.k8s.io/v1","kind":"VerticalPodAutoscaler","metadata":{"annotations":{},"name":"redis-cart","namespace":"boutique"},"spec":{"targetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"redis-cart"},"updatePolicy":{"updateMode":"Off"}}}
+    creationTimestamp: "2026-10-21T22:16:35Z"
+    generation: 1
+    name: redis-cart
+    namespace: boutique
+    resourceVersion: "24824"
+    uid: cd51f6b6-8bf8-4fe1-b0e8-9cb33438a9c9
+  spec:
+    targetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: redis-cart
+    updatePolicy:
+      updateMode: "Off"
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-21T22:17:32Z"
+      status: "True"
+      type: RecommendationProvided
+    observedGeneration: 1
+    recommendation:
+      containerRecommendations:
+      - containerName: redis
+        lowerBound:
+          cpu: 15m
+          memory: 100Mi
+        target:
+          cpu: 15m
+          memory: 100Mi
+        uncappedTarget:
+          cpu: 15m
+          memory: 100Mi
+        upperBound:
+          cpu: 93m
+          memory: 100Mi
+- apiVersion: autoscaling.k8s.io/v1
+  kind: VerticalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"autoscaling.k8s.io/v1","kind":"VerticalPodAutoscaler","metadata":{"annotations":{},"name":"shippingservice","namespace":"boutique"},"spec":{"targetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"shippingservice"},"updatePolicy":{"updateMode":"Off"}}}
+    creationTimestamp: "2026-10-21T22:16:35Z"
+    generation: 1
+    name: shippingservice
+    namespace: boutique
+    resourceVersion: "24831"
+    uid: bdd29f44-905b-428a-9e82-53f14f951853
+  spec:
+    targetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: shippingservice
+    updatePolicy:
+      updateMode: "Off"
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-21T22:17:32Z"
+      status: "True"
+      type: RecommendationProvided
+    observedGeneration: 1
+    recommendation:
+      containerRecommendations:
+      - containerName: server
+        lowerBound:
+          cpu: 15m
+          memory: 100Mi
+        target:
+          cpu: 15m
+          memory: 100Mi
+        uncappedTarget:
+          cpu: 15m
+          memory: 100Mi
+        upperBound:
+          cpu: 93m
+          memory: 100Mi
+kind: List
+metadata:
+  resourceVersion: ""

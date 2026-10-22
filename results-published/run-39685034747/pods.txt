@@ -1,0 +1,13 @@
+NAME                                     READY   STATUS    RESTARTS   AGE     IP            NODE                 NOMINATED NODE   READINESS GATES
+adservice-7fb5755b6d-6zfnn               1/1     Running   0          3h15m   10.244.3.5    rightsized-worker2   <none>           <none>
+cartservice-7867cc76bb-fts8j             1/1     Running   0          2m32s   10.244.1.16   rightsized-worker3   <none>           <none>
+checkoutservice-6476c8c74-vqqn7          1/1     Running   0          2m32s   10.244.2.9    rightsized-worker    <none>           <none>
+currencyservice-b47dcb68f-cgcfs          1/1     Running   0          2m32s   10.244.1.17   rightsized-worker3   <none>           <none>
+emailservice-5bd47f874c-xgzp5            1/1     Running   0          3h15m   10.244.2.4    rightsized-worker    <none>           <none>
+frontend-86947c4855-r4mgt                1/1     Running   0          2m31s   10.244.1.18   rightsized-worker3   <none>           <none>
+frontend-86947c4855-zp8tz                1/1     Running   0          2m21s   10.244.2.12   rightsized-worker    <none>           <none>
+paymentservice-5fdcbd9ff5-jdw7t          1/1     Running   0          2m31s   10.244.2.10   rightsized-worker    <none>           <none>
+productcatalogservice-5d6fc8bc7d-zmqdw   1/1     Running   0          2m31s   10.244.3.12   rightsized-worker2   <none>           <none>
+recommendationservice-65d76895d5-58tms   1/1     Running   0          2m31s   10.244.2.11   rightsized-worker    <none>           <none>
+redis-cart-5bb667b74b-tcct5              1/1     Running   0          2m31s   10.244.1.19   rightsized-worker3   <none>           <none>
+shippingservice-674cb8bb7f-rqnwc         1/1     Running   0          2m30s   10.244.3.13   rightsized-worker2   <none>           <none>

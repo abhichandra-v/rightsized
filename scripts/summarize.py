@@ -79,6 +79,13 @@ def main(root: Path) -> None:
           "Node and dollar figures are bin-packing simulations: kind has a fixed node count and no autoscaler.\n")
     for name, md in details:
         print(f"### Guardrails: {name}\n\n{md}")
+    for name, d in (("baseline", root / "baseline"), ("rightsized", root / "candidate"), ("stock VPA", root / "vpa")):
+        tops = [json.loads(f.read_text()) for f in sorted(d.glob("run*.cluster.json"))] if d.exists() else []
+        if any("top_throttled" in t for t in tops):
+            print(f"### Attribution: {name}\n")
+            for i, t in enumerate(tops, 1):
+                print(f"- run {i}: throttled {t.get('top_throttled') or '-'}; restarts {t.get('top_restarts') or '-'}")
+            print()
 
     flagged = [r for r in theirs if r.verdict is not Verdict.SAFE]
     if flagged:

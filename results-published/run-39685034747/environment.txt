@@ -1,0 +1,7 @@
+runner: 4 vCPU, 15 GiB
+Linux runnervmxehtw 7.0.0-1017-azure #17~24.04.1-Ubuntu SMP PREEMPT Thu Sep 24 18:46:57 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+kind v0.24.0 go1.22.6 linux/amd64
+v3.16.2+g13654a5
+k6 v0.54.0 (commit/baba871c8a, go1.23.1, linux/amd64)
+inputs: day=10m observe=7 runs=3 peak_rps=25
+a2e7356c4f09a3823e0b05b52d8590707ec9c806

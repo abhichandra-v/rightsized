@@ -1,0 +1,7 @@
+{
+  "oom_events": 0,
+  "max_throttle_ratio": 0.998859171108702,
+  "restarts": 8,
+  "unavailable_deployments": [],
+  "nodes": 4
+}

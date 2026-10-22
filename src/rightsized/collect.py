@@ -57,17 +57,31 @@ def queries(ns: str, pod_re: str, container: str, window: str) -> dict[str, str]
     return q
 
 
+def top_by_container(prom: "Prometheus", query: str, n: int = 3) -> dict[str, float]:
+    """The n largest per-container values of a `by (namespace, pod, container)` query."""
+    out = {}
+    for r in prom.vector(f"topk({n}, {query})"):
+        m = r["metric"]
+        v = float(r["value"][1])
+        if v == v and v > 0:
+            out[f"{m.get('namespace')}/{m.get('pod')}/{m.get('container')}"] = round(v, 4)
+    return out
+
+
 class Prometheus:
     def __init__(self, url: str):
         self.url = url.rstrip("/")
 
-    def scalar(self, query: str) -> float:
+    def vector(self, query: str) -> list[dict]:
         qs = urllib.parse.urlencode({"query": query})
         with urllib.request.urlopen(f"{self.url}/api/v1/query?{qs}", timeout=60) as r:
             body = json.load(r)
         if body.get("status") != "success":
             raise RuntimeError(f"prometheus error for {query!r}: {body}")
-        result = body["data"]["result"]
+        return body["data"]["result"]
+
+    def scalar(self, query: str) -> float:
+        result = self.vector(query)
         if not result:
             return 0.0
         v = float(result[0]["value"][1])

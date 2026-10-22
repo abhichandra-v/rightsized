@@ -1,0 +1,473 @@
+{
+  "cluster": "kind-rightsized",
+  "collected_at": "2026-10-21T23:34:10+00:00",
+  "containers": [
+    {
+      "container": "server",
+      "cpu": {
+        "max": 0.032183905526481635,
+        "mean": 0.008844650016631792,
+        "p50": 0.007045682324248234,
+        "p95": 0.02401541162188829,
+        "p99": 0.0319148604095932,
+        "stddev": 0.006619595476331484
+      },
+      "criticality": "normal",
+      "has_pdb": false,
+      "kind": "Deployment",
+      "limits": {
+        "cpu": 1.0,
+        "memory": 268435456
+      },
+      "memory": {
+        "max": 91533312.0,
+        "mean": 88745353.84615384,
+        "p50": 89939968.0,
+        "p95": 91198054.4,
+        "p99": 91492311.03999999,
+        "stddev": 0.0
+      },
+      "namespace": "boutique",
+      "observed_seconds": 4450.232024908066,
+      "oom_events": 0,
+      "replicas": 1,
+      "requests": {
+        "cpu": 1.0,
+        "memory": 268435456
+      },
+      "restarts": 0,
+      "throttle_ratio": 0.0003459968168292852,
+      "workload": "adservice"
+    },
+    {
+      "container": "server",
+      "cpu": {
+        "max": 0.0506616993201572,
+        "mean": 0.024715544669978225,
+        "p50": 0.023722926811845534,
+        "p95": 0.04339746287332402,
+        "p99": 0.05029957525298411,
+        "stddev": 0.010929101304151919
+      },
+      "criticality": "normal",
+      "has_pdb": false,
+      "kind": "Deployment",
+      "limits": {
+        "cpu": 1.0,
+        "memory": 1073741824
+      },
+      "memory": {
+        "max": 62238720.0,
+        "mean": 59050299.07692308,
+        "p50": 60235776.0,
+        "p95": 61962240.0,
+        "p99": 62090485.76,
+        "stddev": 0.0
+      },
+      "namespace": "boutique",
+      "observed_seconds": 4450.232024908066,
+      "oom_events": 0,
+      "replicas": 1,
+      "requests": {
+        "cpu": 0.5,
+        "memory": 1073741824
+      },
+      "restarts": 0,
+      "throttle_ratio": 0.0001295840352468576,
+      "workload": "cartservice"
+    },
+    {
+      "container": "server",
+      "cpu": {
+        "max": 0.004158206120559793,
+        "mean": 0.002414263539852001,
+        "p50": 0.0024595567311680054,
+        "p95": 0.0040302317227730216,
+        "p99": 0.004114756046637929,
+        "stddev": 0.0011294625019783277
+      },
+      "criticality": "critical",
+      "has_pdb": true,
+      "kind": "Deployment",
+      "limits": {
+        "cpu": 1.0,
+        "memory": 1073741824
+      },
+      "memory": {
+        "max": 9957376.0,
+        "mean": 8783661.948717948,
+        "p50": 8927232.0,
+        "p95": 9347891.2,
+        "p99": 9692446.720000003,
+        "stddev": 0.0
+      },
+      "namespace": "boutique",
+      "observed_seconds": 4450.232024908066,
+      "oom_events": 0,
+      "replicas": 1,
+      "requests": {
+        "cpu": 0.5,
+        "memory": 536870912
+      },
+      "restarts": 0,
+      "throttle_ratio": 0.0,
+      "workload": "checkoutservice"
+    },
+    {
+      "container": "server",
+      "cpu": {
+        "max": 0.05658495660029335,
+        "mean": 0.031042332452363812,
+        "p50": 0.030680307619253153,
+        "p95": 0.05211380926415931,
+        "p99": 0.054389517077071514,
+        "stddev": 0.014538276203578738
+      },
+      "criticality": "normal",
+      "has_pdb": false,
+      "kind": "Deployment",
+      "limits": {
+        "cpu": 0.1,
+        "memory": 1073741824
+      },
+      "memory": {
+        "max": 66682880.0,
+        "mean": 47653441.64102564,
+        "p50": 47695872.0,
+        "p95": 62766694.39999999,
+        "p99": 66663956.480000004,
+        "stddev": 0.0
+      },
+      "namespace": "boutique",
+      "observed_seconds": 4450.232024908066,
+      "oom_events": 0,
+      "replicas": 1,
+      "requests": {
+        "cpu": 0.1,
+        "memory": 536870912
+      },
+      "restarts": 0,
+      "throttle_ratio": 0.04892711178293608,
+      "workload": "currencyservice"
+    },
+    {
+      "container": "server",
+      "cpu": {
+        "max": 0.004397420691764004,
+        "mean": 0.0018121161561262512,
+        "p50": 0.0017393128495920055,
+        "p95": 0.003481008919464694,
+        "p99": 0.004063872132014393,
+        "stddev": 0.0006100254330853
+      },
+      "criticality": "normal",
+      "has_pdb": false,
+      "kind": "Deployment",
+      "limits": {
+        "cpu": 0.5,
+        "memory": 1073741824
+      },
+      "memory": {
+        "max": 44130304.0,
+        "mean": 43796164.92307692,
+        "p50": 43878400.0,
+        "p95": 43986944.0,
+        "p99": 44019916.8,
+        "stddev": 0.0
+      },
+      "namespace": "boutique",
+      "observed_seconds": 4450.232024908066,
+      "oom_events": 0,
+      "replicas": 1,
+      "requests": {
+        "cpu": 0.25,
+        "memory": 536870912
+      },
+      "restarts": 0,
+      "throttle_ratio": 0.0015414258188824663,
+      "workload": "emailservice"
+    },
+    {
+      "container": "server",
+      "cpu": {
+        "max": 0.06604382230353383,
+        "mean": 0.03279737186462684,
+        "p50": 0.03372704956046609,
+        "p95": 0.05922402775040228,
+        "p99": 0.062491769541629966,
+        "stddev": 0.01703817108503975
+      },
+      "criticality": "normal",
+      "has_pdb": true,
+      "kind": "Deployment",
+      "limits": {
+        "cpu": 1.0,
+        "memory": 1073741824
+      },
+      "memory": {
+        "max": 14278656.0,
+        "mean": 13052009.025641026,
+        "p50": 13193216.0,
+        "p95": 13946060.799999999,
+        "p99": 14193500.16,
+        "stddev": 0.0
+      },
+      "namespace": "boutique",
+      "observed_seconds": 4450.232024908066,
+      "oom_events": 0,
+      "replicas": 2,
+      "requests": {
+        "cpu": 0.5,
+        "memory": 536870912
+      },
+      "restarts": 0,
+      "throttle_ratio": 0.0,
+      "workload": "frontend"
+    },
+    {
+      "container": "server",
+      "cpu": {
+        "max": 0.002323870249119976,
+        "mean": 0.0012885614528073016,
+        "p50": 0.0012757224274114341,
+        "p95": 0.002081598134511892,
+        "p99": 0.0022258574588369853,
+        "stddev": 0.0004950297991571678
+      },
+      "criticality": "critical",
+      "has_pdb": false,
+      "kind": "Deployment",
+      "limits": {
+        "cpu": 0.5,
+        "memory": 1073741824
+      },
+      "memory": {
+        "max": 47558656.0,
+        "mean": 31987396.923076924,
+        "p50": 32700416.0,
+        "p95": 45703577.6,
+        "p99": 47031951.36,
+        "stddev": 0.0
+      },
+      "namespace": "boutique",
+      "observed_seconds": 4450.232024908066,
+      "oom_events": 0,
+      "replicas": 1,
+      "requests": {
+        "cpu": 0.25,
+        "memory": 536870912
+      },
+      "restarts": 0,
+      "throttle_ratio": 0.0009749758766864109,
+      "workload": "paymentservice"
+    },
+    {
+      "container": "server",
+      "cpu": {
+        "max": 0.04546851737498899,
+        "mean": 0.025029352291531384,
+        "p50": 0.02556322391191783,
+        "p95": 0.04235847002754997,
+        "p99": 0.044165958044932146,
+        "stddev": 0.012359091602107517
+      },
+      "criticality": "normal",
+      "has_pdb": false,
+      "kind": "Deployment",
+      "limits": {
+        "cpu": 1.0,
+        "memory": 1073741824
+      },
+      "memory": {
+        "max": 10190848.0,
+        "mean": 9154927.58974359,
+        "p50": 9191424.0,
+        "p95": 9832243.2,
+        "p99": 10159308.8,
+        "stddev": 0.0
+      },
+      "namespace": "boutique",
+      "observed_seconds": 4450.232024908066,
+      "oom_events": 0,
+      "replicas": 1,
+      "requests": {
+        "cpu": 0.5,
+        "memory": 536870912
+      },
+      "restarts": 0,
+      "throttle_ratio": 0.0,
+      "workload": "productcatalogservice"
+    },
+    {
+      "container": "server",
+      "cpu": {
+        "max": 0.029324062899145326,
+        "mean": 0.01634314596810916,
+        "p50": 0.016358814450965698,
+        "p95": 0.026814250987029994,
+        "p99": 0.028071817619529735,
+        "stddev": 0.007317646492551093
+      },
+      "criticality": "normal",
+      "has_pdb": false,
+      "kind": "Deployment",
+      "limits": {
+        "cpu": 1.0,
+        "memory": 1073741824
+      },
+      "memory": {
+        "max": 43696128.0,
+        "mean": 42476622.76923077,
+        "p50": 42948608.0,
+        "p95": 43616256.0,
+        "p99": 43677204.480000004,
+        "stddev": 0.0
+      },
+      "namespace": "boutique",
+      "observed_seconds": 4450.232024908066,
+      "oom_events": 0,
+      "replicas": 1,
+      "requests": {
+        "cpu": 0.5,
+        "memory": 1073741824
+      },
+      "restarts": 0,
+      "throttle_ratio": 0.0,
+      "workload": "recommendationservice"
+    },
+    {
+      "container": "redis",
+      "cpu": {
+        "max": 0.0047904448646740325,
+        "mean": 0.0032288954141345802,
+        "p50": 0.0032623454006922726,
+        "p95": 0.004482357030263803,
+        "p99": 0.004667726508576938,
+        "stddev": 0.0009033661007653822
+      },
+      "criticality": "normal",
+      "has_pdb": false,
+      "kind": "Deployment",
+      "limits": {
+        "cpu": 0.5,
+        "memory": 1073741824
+      },
+      "memory": {
+        "max": 7925760.0,
+        "mean": 6714499.282051282,
+        "p50": 6838272.0,
+        "p95": 7538892.799999999,
+        "p99": 7768064.000000001,
+        "stddev": 0.0
+      },
+      "namespace": "boutique",
+      "observed_seconds": 4450.232024908066,
+      "oom_events": 0,
+      "replicas": 1,
+      "requests": {
+        "cpu": 0.25,
+        "memory": 536870912
+      },
+      "restarts": 0,
+      "throttle_ratio": 0.0,
+      "workload": "redis-cart"
+    },
+    {
+      "container": "server",
+      "cpu": {
+        "max": 0.004959376904700187,
+        "mean": 0.002869776452761981,
+        "p50": 0.002979488068724499,
+        "p95": 0.00480155118419766,
+        "p99": 0.004918998443757945,
+        "stddev": 0.001352868916902028
+      },
+      "criticality": "normal",
+      "has_pdb": false,
+      "kind": "Deployment",
+      "limits": {
+        "cpu": 0.5,
+        "memory": 1073741824
+      },
+      "memory": {
+        "max": 9011200.0,
+        "mean": 8007785.025641026,
+        "p50": 8038400.0,
+        "p95": 8749875.2,
+        "p99": 8926044.16,
+        "stddev": 0.0
+      },
+      "namespace": "boutique",
+      "observed_seconds": 4450.232024908066,
+      "oom_events": 0,
+      "replicas": 1,
+      "requests": {
+        "cpu": 0.25,
+        "memory": 536870912
+      },
+      "restarts": 0,
+      "throttle_ratio": 0.0,
+      "workload": "shippingservice"
+    }
+  ],
+  "node_pool": {
+    "cpu_allocatable": 1.93,
+    "daemonset_cpu": 0.2,
+    "daemonset_memory": 314572800,
+    "hourly_usd": 0.096,
+    "instance_type": "m6i.large",
+    "memory_allocatable": 7480541184,
+    "min_nodes": 1
+  },
+  "unmanaged_pods": [
+    {
+      "cpu": 0.1,
+      "memory": 73400320
+    },
+    {
+      "cpu": 0.1,
+      "memory": 73400320
+    },
+    {
+      "cpu": 0.1,
+      "memory": 104857600
+    },
+    {
+      "cpu": 0.25,
+      "memory": 0
+    },
+    {
+      "cpu": 0.2,
+      "memory": 0
+    },
+    {
+      "cpu": 0.1,
+      "memory": 0
+    },
+    {
+      "cpu": 0.1,
+      "memory": 209715200
+    },
+    {
+      "cpu": 0,
+      "memory": 0
+    },
+    {
+      "cpu": 0,
+      "memory": 0
+    },
+    {
+      "cpu": 0,
+      "memory": 0
+    },
+    {
+      "cpu": 0.2,
+      "memory": 1073741824
+    },
+    {
+      "cpu": 0.05,
+      "memory": 524288000
+    }
+  ],
+  "window": "92m"
+}

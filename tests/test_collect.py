@@ -25,3 +25,12 @@ def test_queries_cover_every_signal():
     q = collect.queries("boutique", "x-.*", "server", "7d")
     assert {"cpu_p95", "mem_max", "throttle_ratio", "oom_events", "restarts", "first_sample"} <= q.keys()
     assert all('container="server"' in v for v in q.values())
+
+
+def test_top_by_container_drops_zero_and_nan():
+    class P:
+        def vector(self, q):
+            assert q.startswith("topk(3, ")
+            mk = lambda c, v: {"metric": {"namespace": "b", "pod": "p", "container": c}, "value": [0, v]}
+            return [mk("a", "0.9"), mk("z", "0"), mk("n", "NaN")]
+    assert collect.top_by_container(P(), "q") == {"b/p/a": 0.9}
