@@ -1,0 +1,647 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "autoscaling.k8s.io/v1",
+            "kind": "VerticalPodAutoscaler",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling.k8s.io/v1\",\"kind\":\"VerticalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"adservice\",\"namespace\":\"boutique\"},\"spec\":{\"targetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"adservice\"},\"updatePolicy\":{\"updateMode\":\"Off\"}}}\n"
+                },
+                "creationTimestamp": "2026-10-22T01:39:14Z",
+                "generation": 1,
+                "name": "adservice",
+                "namespace": "boutique",
+                "resourceVersion": "10642",
+                "uid": "0fad7165-2946-4539-b08f-71948b441194"
+            },
+            "spec": {
+                "targetRef": {
+                    "apiVersion": "apps/v1",
+                    "kind": "Deployment",
+                    "name": "adservice"
+                },
+                "updatePolicy": {
+                    "updateMode": "Off"
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-10-22T01:40:12Z",
+                        "status": "True",
+                        "type": "RecommendationProvided"
+                    }
+                ],
+                "observedGeneration": 1,
+                "recommendation": {
+                    "containerRecommendations": [
+                        {
+                            "containerName": "server",
+                            "lowerBound": {
+                                "cpu": "15m",
+                                "memory": "105773871"
+                            },
+                            "target": {
+                                "cpu": "23m",
+                                "memory": "109814751"
+                            },
+                            "uncappedTarget": {
+                                "cpu": "23m",
+                                "memory": "109814751"
+                            },
+                            "upperBound": {
+                                "cpu": "976m",
+                                "memory": "2187781129"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "autoscaling.k8s.io/v1",
+            "kind": "VerticalPodAutoscaler",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling.k8s.io/v1\",\"kind\":\"VerticalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"cartservice\",\"namespace\":\"boutique\"},\"spec\":{\"targetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"cartservice\"},\"updatePolicy\":{\"updateMode\":\"Off\"}}}\n"
+                },
+                "creationTimestamp": "2026-10-22T01:39:14Z",
+                "generation": 1,
+                "name": "cartservice",
+                "namespace": "boutique",
+                "resourceVersion": "10637",
+                "uid": "a69c5769-e1af-45e0-862f-716651b27ef6"
+            },
+            "spec": {
+                "targetRef": {
+                    "apiVersion": "apps/v1",
+                    "kind": "Deployment",
+                    "name": "cartservice"
+                },
+                "updatePolicy": {
+                    "updateMode": "Off"
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-10-22T01:40:12Z",
+                        "status": "True",
+                        "type": "RecommendationProvided"
+                    }
+                ],
+                "observedGeneration": 1,
+                "recommendation": {
+                    "containerRecommendations": [
+                        {
+                            "containerName": "server",
+                            "lowerBound": {
+                                "cpu": "22m",
+                                "memory": "157354647"
+                            },
+                            "target": {
+                                "cpu": "35m",
+                                "memory": "163378051"
+                            },
+                            "uncappedTarget": {
+                                "cpu": "35m",
+                                "memory": "163378051"
+                            },
+                            "upperBound": {
+                                "cpu": "698m",
+                                "memory": "3261000084"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "autoscaling.k8s.io/v1",
+            "kind": "VerticalPodAutoscaler",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling.k8s.io/v1\",\"kind\":\"VerticalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"checkoutservice\",\"namespace\":\"boutique\"},\"spec\":{\"targetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"checkoutservice\"},\"updatePolicy\":{\"updateMode\":\"Off\"}}}\n"
+                },
+                "creationTimestamp": "2026-10-22T01:39:14Z",
+                "generation": 1,
+                "name": "checkoutservice",
+                "namespace": "boutique",
+                "resourceVersion": "10640",
+                "uid": "d6d489b2-4a23-43df-a7a2-95ba92113f2d"
+            },
+            "spec": {
+                "targetRef": {
+                    "apiVersion": "apps/v1",
+                    "kind": "Deployment",
+                    "name": "checkoutservice"
+                },
+                "updatePolicy": {
+                    "updateMode": "Off"
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-10-22T01:40:12Z",
+                        "status": "True",
+                        "type": "RecommendationProvided"
+                    }
+                ],
+                "observedGeneration": 1,
+                "recommendation": {
+                    "containerRecommendations": [
+                        {
+                            "containerName": "server",
+                            "lowerBound": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "target": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "uncappedTarget": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "upperBound": {
+                                "cpu": "219m",
+                                "memory": "229442531"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "autoscaling.k8s.io/v1",
+            "kind": "VerticalPodAutoscaler",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling.k8s.io/v1\",\"kind\":\"VerticalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"currencyservice\",\"namespace\":\"boutique\"},\"spec\":{\"targetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"currencyservice\"},\"updatePolicy\":{\"updateMode\":\"Off\"}}}\n"
+                },
+                "creationTimestamp": "2026-10-22T01:39:14Z",
+                "generation": 1,
+                "name": "currencyservice",
+                "namespace": "boutique",
+                "resourceVersion": "10635",
+                "uid": "a8bf61f6-e806-4cb6-9825-075cace47935"
+            },
+            "spec": {
+                "targetRef": {
+                    "apiVersion": "apps/v1",
+                    "kind": "Deployment",
+                    "name": "currencyservice"
+                },
+                "updatePolicy": {
+                    "updateMode": "Off"
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-10-22T01:40:12Z",
+                        "status": "True",
+                        "type": "RecommendationProvided"
+                    }
+                ],
+                "observedGeneration": 1,
+                "recommendation": {
+                    "containerRecommendations": [
+                        {
+                            "containerName": "server",
+                            "lowerBound": {
+                                "cpu": "47m",
+                                "memory": "100Mi"
+                            },
+                            "target": {
+                                "cpu": "63m",
+                                "memory": "100Mi"
+                            },
+                            "uncappedTarget": {
+                                "cpu": "63m",
+                                "memory": "100Mi"
+                            },
+                            "upperBound": {
+                                "cpu": "1258m",
+                                "memory": "1562601645"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "autoscaling.k8s.io/v1",
+            "kind": "VerticalPodAutoscaler",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling.k8s.io/v1\",\"kind\":\"VerticalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"emailservice\",\"namespace\":\"boutique\"},\"spec\":{\"targetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"emailservice\"},\"updatePolicy\":{\"updateMode\":\"Off\"}}}\n"
+                },
+                "creationTimestamp": "2026-10-22T01:39:14Z",
+                "generation": 1,
+                "name": "emailservice",
+                "namespace": "boutique",
+                "resourceVersion": "10638",
+                "uid": "5a1810df-8935-4266-9f10-9be6e8ee3670"
+            },
+            "spec": {
+                "targetRef": {
+                    "apiVersion": "apps/v1",
+                    "kind": "Deployment",
+                    "name": "emailservice"
+                },
+                "updatePolicy": {
+                    "updateMode": "Off"
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-10-22T01:40:12Z",
+                        "status": "True",
+                        "type": "RecommendationProvided"
+                    }
+                ],
+                "observedGeneration": 1,
+                "recommendation": {
+                    "containerRecommendations": [
+                        {
+                            "containerName": "server",
+                            "lowerBound": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "target": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "uncappedTarget": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "upperBound": {
+                                "cpu": "219m",
+                                "memory": "1267286720"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "autoscaling.k8s.io/v1",
+            "kind": "VerticalPodAutoscaler",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling.k8s.io/v1\",\"kind\":\"VerticalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"frontend\",\"namespace\":\"boutique\"},\"spec\":{\"targetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"frontend\"},\"updatePolicy\":{\"updateMode\":\"Off\"}}}\n"
+                },
+                "creationTimestamp": "2026-10-22T01:39:14Z",
+                "generation": 1,
+                "name": "frontend",
+                "namespace": "boutique",
+                "resourceVersion": "10644",
+                "uid": "b709943c-79f7-4c44-9801-a7fcc905e7c9"
+            },
+            "spec": {
+                "targetRef": {
+                    "apiVersion": "apps/v1",
+                    "kind": "Deployment",
+                    "name": "frontend"
+                },
+                "updatePolicy": {
+                    "updateMode": "Off"
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-10-22T01:40:12Z",
+                        "status": "True",
+                        "type": "RecommendationProvided"
+                    }
+                ],
+                "observedGeneration": 1,
+                "recommendation": {
+                    "containerRecommendations": [
+                        {
+                            "containerName": "server",
+                            "lowerBound": {
+                                "cpu": "33m",
+                                "memory": "100Mi"
+                            },
+                            "target": {
+                                "cpu": "63m",
+                                "memory": "100Mi"
+                            },
+                            "uncappedTarget": {
+                                "cpu": "63m",
+                                "memory": "100Mi"
+                            },
+                            "upperBound": {
+                                "cpu": "1554m",
+                                "memory": "469867685"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "autoscaling.k8s.io/v1",
+            "kind": "VerticalPodAutoscaler",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling.k8s.io/v1\",\"kind\":\"VerticalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"paymentservice\",\"namespace\":\"boutique\"},\"spec\":{\"targetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"paymentservice\"},\"updatePolicy\":{\"updateMode\":\"Off\"}}}\n"
+                },
+                "creationTimestamp": "2026-10-22T01:39:14Z",
+                "generation": 1,
+                "name": "paymentservice",
+                "namespace": "boutique",
+                "resourceVersion": "10643",
+                "uid": "5f34e6fa-87ef-47d8-8020-04640c3ec820"
+            },
+            "spec": {
+                "targetRef": {
+                    "apiVersion": "apps/v1",
+                    "kind": "Deployment",
+                    "name": "paymentservice"
+                },
+                "updatePolicy": {
+                    "updateMode": "Off"
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-10-22T01:40:12Z",
+                        "status": "True",
+                        "type": "RecommendationProvided"
+                    }
+                ],
+                "observedGeneration": 1,
+                "recommendation": {
+                    "containerRecommendations": [
+                        {
+                            "containerName": "server",
+                            "lowerBound": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "target": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "uncappedTarget": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "upperBound": {
+                                "cpu": "219m",
+                                "memory": "1266495479"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "autoscaling.k8s.io/v1",
+            "kind": "VerticalPodAutoscaler",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling.k8s.io/v1\",\"kind\":\"VerticalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"productcatalogservice\",\"namespace\":\"boutique\"},\"spec\":{\"targetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"productcatalogservice\"},\"updatePolicy\":{\"updateMode\":\"Off\"}}}\n"
+                },
+                "creationTimestamp": "2026-10-22T01:39:14Z",
+                "generation": 1,
+                "name": "productcatalogservice",
+                "namespace": "boutique",
+                "resourceVersion": "10645",
+                "uid": "6c0d4f6a-af96-419b-b1d0-36e6149ef83e"
+            },
+            "spec": {
+                "targetRef": {
+                    "apiVersion": "apps/v1",
+                    "kind": "Deployment",
+                    "name": "productcatalogservice"
+                },
+                "updatePolicy": {
+                    "updateMode": "Off"
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-10-22T01:40:12Z",
+                        "status": "True",
+                        "type": "RecommendationProvided"
+                    }
+                ],
+                "observedGeneration": 1,
+                "recommendation": {
+                    "containerRecommendations": [
+                        {
+                            "containerName": "server",
+                            "lowerBound": {
+                                "cpu": "33m",
+                                "memory": "100Mi"
+                            },
+                            "target": {
+                                "cpu": "49m",
+                                "memory": "100Mi"
+                            },
+                            "uncappedTarget": {
+                                "cpu": "49m",
+                                "memory": "100Mi"
+                            },
+                            "upperBound": {
+                                "cpu": "975m",
+                                "memory": "469379293"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "autoscaling.k8s.io/v1",
+            "kind": "VerticalPodAutoscaler",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling.k8s.io/v1\",\"kind\":\"VerticalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"recommendationservice\",\"namespace\":\"boutique\"},\"spec\":{\"targetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"recommendationservice\"},\"updatePolicy\":{\"updateMode\":\"Off\"}}}\n"
+                },
+                "creationTimestamp": "2026-10-22T01:39:14Z",
+                "generation": 1,
+                "name": "recommendationservice",
+                "namespace": "boutique",
+                "resourceVersion": "10639",
+                "uid": "bc1ea6ea-1413-4a2c-835d-b9d20b1cf2b2"
+            },
+            "spec": {
+                "targetRef": {
+                    "apiVersion": "apps/v1",
+                    "kind": "Deployment",
+                    "name": "recommendationservice"
+                },
+                "updatePolicy": {
+                    "updateMode": "Off"
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-10-22T01:40:12Z",
+                        "status": "True",
+                        "type": "RecommendationProvided"
+                    }
+                ],
+                "observedGeneration": 1,
+                "recommendation": {
+                    "containerRecommendations": [
+                        {
+                            "containerName": "server",
+                            "lowerBound": {
+                                "cpu": "22m",
+                                "memory": "100Mi"
+                            },
+                            "target": {
+                                "cpu": "35m",
+                                "memory": "100Mi"
+                            },
+                            "uncappedTarget": {
+                                "cpu": "35m",
+                                "memory": "100Mi"
+                            },
+                            "upperBound": {
+                                "cpu": "697m",
+                                "memory": "1265968562"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "autoscaling.k8s.io/v1",
+            "kind": "VerticalPodAutoscaler",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling.k8s.io/v1\",\"kind\":\"VerticalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"redis-cart\",\"namespace\":\"boutique\"},\"spec\":{\"targetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"redis-cart\"},\"updatePolicy\":{\"updateMode\":\"Off\"}}}\n"
+                },
+                "creationTimestamp": "2026-10-22T01:39:14Z",
+                "generation": 1,
+                "name": "redis-cart",
+                "namespace": "boutique",
+                "resourceVersion": "10641",
+                "uid": "31daa5e7-4c94-4911-b656-c16ee512ac87"
+            },
+            "spec": {
+                "targetRef": {
+                    "apiVersion": "apps/v1",
+                    "kind": "Deployment",
+                    "name": "redis-cart"
+                },
+                "updatePolicy": {
+                    "updateMode": "Off"
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-10-22T01:40:12Z",
+                        "status": "True",
+                        "type": "RecommendationProvided"
+                    }
+                ],
+                "observedGeneration": 1,
+                "recommendation": {
+                    "containerRecommendations": [
+                        {
+                            "containerName": "redis",
+                            "lowerBound": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "target": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "uncappedTarget": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "upperBound": {
+                                "cpu": "219m",
+                                "memory": "229013134"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "autoscaling.k8s.io/v1",
+            "kind": "VerticalPodAutoscaler",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling.k8s.io/v1\",\"kind\":\"VerticalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"shippingservice\",\"namespace\":\"boutique\"},\"spec\":{\"targetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"shippingservice\"},\"updatePolicy\":{\"updateMode\":\"Off\"}}}\n"
+                },
+                "creationTimestamp": "2026-10-22T01:39:14Z",
+                "generation": 1,
+                "name": "shippingservice",
+                "namespace": "boutique",
+                "resourceVersion": "10636",
+                "uid": "8f33740d-7bf7-4fe9-a2e8-de8f2228722b"
+            },
+            "spec": {
+                "targetRef": {
+                    "apiVersion": "apps/v1",
+                    "kind": "Deployment",
+                    "name": "shippingservice"
+                },
+                "updatePolicy": {
+                    "updateMode": "Off"
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-10-22T01:40:12Z",
+                        "status": "True",
+                        "type": "RecommendationProvided"
+                    }
+                ],
+                "observedGeneration": 1,
+                "recommendation": {
+                    "containerRecommendations": [
+                        {
+                            "containerName": "server",
+                            "lowerBound": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "target": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "uncappedTarget": {
+                                "cpu": "15m",
+                                "memory": "100Mi"
+                            },
+                            "upperBound": {
+                                "cpu": "219m",
+                                "memory": "229633918"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

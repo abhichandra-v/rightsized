@@ -1,0 +1,29 @@
+{
+  "applied": [
+    "boutique/adservice/server",
+    "boutique/cartservice/server",
+    "boutique/currencyservice/server",
+    "boutique/emailservice/server",
+    "boutique/frontend/server",
+    "boutique/productcatalogservice/server",
+    "boutique/recommendationservice/server",
+    "boutique/redis-cart/redis",
+    "boutique/shippingservice/server"
+  ],
+  "held": [
+    "boutique/checkoutservice/server",
+    "boutique/paymentservice/server"
+  ],
+  "savings": {
+    "cpu_reclaimed": 4.005,
+    "memory_reclaimed": 3087007744,
+    "paper_monthly_usd": 87.17,
+    "nodes_before": 4,
+    "nodes_after": 2,
+    "node_monthly_usd": 140.16,
+    "hourly_usd": 0.096,
+    "measured_nodes_before": null,
+    "measured_nodes_after": null,
+    "measured_monthly_usd": null
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "oom_events": 0,
+  "max_throttle_ratio": 0.040548368410890136,
+  "restarts": 0,
+  "unavailable_deployments": [],
+  "nodes": 4,
+  "top_throttled": {
+    "boutique/currencyservice-b47dcb68f-24kjn/server": 0.0405
+  },
+  "top_restarts": {}
+}

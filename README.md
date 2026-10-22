@@ -8,13 +8,13 @@ recommendations into **risk-scored pull requests** and verifies each change with
 **before/after load test**. It reports savings at the **node and dollar level**, not just
 the request level.
 
-> **Run 1, kind on a GitHub Actions runner** ([raw data](results-published/run-39685034747/),
-> [summary](results-published/run-39685034747/SUMMARY.md)): applying stock VPA's recommendations
-> made p99 latency **6.3× worse** (32.9 → 208.6 ms) with **8 container restarts** and CPU throttling
-> up to **99.9%**. Rightsized's PR reclaimed 3.96 cores and 2.88 GiB of requests with errors, OOMs,
-> restarts and throttling unchanged, **but missed its own +10% p99 guardrail by 0.1 ms and rolled itself
-> back**. Dollar figures from this run are simulated: kind has no autoscaler and no bill.
-> A like-for-like replication (run 2) is in progress.
+> **Two identical runs on kind** ([run 1](results-published/run-39685034747/SUMMARY.md),
+> [run 2](results-published/run-39706701895/SUMMARY.md), raw data alongside): applying stock VPA's
+> recommendations made median p99 latency **6.3× and 6.5× worse**, restarted containers 8 times in each
+> run and throttled them up to 100%, while HTTP errors stayed at 0%. Rightsized's PR reclaimed about
+> 4 cores and 2.9 GiB of requests with no new errors, OOMs or restarts. It **passed every guardrail in
+> run 2**, and in run 1 **missed its own +10% p99 limit by 0.1 ms and rolled itself back**.
+> Dollar figures are simulated: kind has no autoscaler and no bill.
 
 ## Pipeline
 
@@ -106,45 +106,46 @@ with [guessed requests](deploy/boutique/resources.guessed.yaml), diurnal k6 load
 One compressed day = 10 min; observation = 7 compressed days. Three 10-minute load runs per arm,
 all against the same baseline.
 
-### Run 1 ([39685034747](https://github.com/abhichandra-v/rightsized/actions/runs/39685034747))
+| | rightsized, run 1 | rightsized, run 2 | stock VPA, run 1 | stock VPA, run 2 |
+|---|---|---|---|---|
+| Containers changed | 9 of 11 | 9 of 11 | 11 of 11 | 11 of 11 |
+| Requests reclaimed | 3.96 cores, 2.88 GiB | 4.00 cores, 2.88 GiB | 4.62 cores, 5.57 GiB | 4.69 cores, 5.52 GiB |
+| Nodes, bin-packing sim (m6i.large) | 4 → 2 (≈ $140/mo) | 4 → 2 (≈ $140/mo) | 4 → 1 (≈ $210/mo) | 4 → 1 (≈ $210/mo) |
+| p99, median of 3 | 32.9 → 36.3 ms (+10.3%) | 29.0 → 31.3 ms (+7.9%) | 32.9 → 208.6 ms (6.3×) | 29.0 → 188.0 ms (6.5×) |
+| Error rate | 0% → 0% | 0% → 0% | 0% → 0% | 0% → 0% |
+| New container restarts | 0 | 0 | 8 | 8 |
+| Deployments not available | 0 | 0 | 0 | 1 (emailservice) |
+| Max container throttle ratio | 3.7% → 3.8% | 2.9% → 2.8% | 3.7% → 99.9% | 2.9% → 100% |
+| Guardrail verdict | ❌ p99 by 0.1 ms → rolled back | ✅ pass | ❌ 3 guardrails | ❌ 4 guardrails |
 
-| | rightsized | stock VPA |
-|---|---|---|
-| Containers changed | 9 of 11 (2 held for review) | 11 of 11 |
-| Requests reclaimed | 3.96 cores, 2.88 GiB | 4.62 cores, 5.57 GiB |
-| Nodes, bin-packing simulation (m6i.large) | 4 → 2 (≈ $140/mo) | 4 → 1 (≈ $210/mo) |
-| p99 latency, median of 3 (baseline 32.9 ms) | 36.3 ms (+10.3%) | 208.6 ms (+534%) |
-| Error rate | 0.00% → 0.00% | 0.00% → 0.00% |
-| New container restarts | 0 | 8 |
-| Max container throttle ratio (baseline 3.7%) | 3.8% | 99.9% |
-| Guardrail verdict | ❌ p99 (limit 36.2 ms) → rolled back | ❌ p99, restarts, throttling |
-
-### Run 2
-
-_Replication with identical settings and guardrails: in progress._
+Run IDs: [39685034747](https://github.com/abhichandra-v/rightsized/actions/runs/39685034747) and
+[39706701895](https://github.com/abhichandra-v/rightsized/actions/runs/39706701895). Same pipeline,
+inputs and guardrails; run 2 additionally recorded which containers throttled and restarted.
 
 ## Findings
 
-1. **Stock VPA's regression most likely comes from its limit handling, not its request targets.**
-   VPA's CPU targets were close to Rightsized's (e.g. frontend 78m vs 70m, cartservice 63m vs 50m). But stock VPA scales *limits* in proportion to
-   requests (`RequestsAndLimits`), so a 1-core limit with a 23m recommendation became a 23m limit.
-   The smoke run showed adservice's JVM failing its liveness probe 9 times under exactly that. In run 1
-   the VPA arm hit 99.9% throttling and 8 restarts while HTTP error rate stayed at 0%. A guardrail
-   on error rate alone would have passed it. That is why `verify` also counts restarts and
-   unavailable deployments. Run 1 recorded totals only, so it cannot name the containers; run 2
-   records per-container attribution to confirm or refute this.
-2. **The p99 guardrail is tighter than the noise.** Rightsized's candidate missed by 0.1 ms, while the
-   baseline's own three runs ranged 32–48 ms. The pipeline did what it is built to do and rolled back.
-   Whether the change actually made the service slower is what run 2 is for. A median-of-3 p99 with
-   a 10% threshold is a strict test, and it will sometimes reject a harmless change.
-3. **Requests reclaimed and nodes removed are different numbers.** On paper, Rightsized's
-   reclaimed requests are worth ≈ $86/mo when each core and GiB is priced as billable; the bin-packing
-   simulation says ≈ $140/mo because whole nodes empty out. Neither is a measurement. Only a run with an
-   autoscaler and a bill ([docs/cloud-run.md](docs/cloud-run.md)) turns either into a real dollar figure.
-4. **The deliberate under-sizings did not fire.** adservice peaked at 88 Mi of its 256 Mi limit
-   (no OOM), and currencyservice was throttled 4.9%, just under the 5% warning threshold, so its
-   CPU request was lowered (100m → 60m, limit kept at 100m). The guessed values were not as wrong as
-   intended at this load.
+1. **Stock VPA's regression comes from its limit handling, not its request targets.** VPA's CPU
+   targets were close to Rightsized's (frontend 78m vs 70m, cartservice 63m vs 50m). But stock VPA
+   scales *limits* in proportion to requests (`RequestsAndLimits`). adservice's 1-core limit became
+   **23m, below its own observed p99 of 26–32m**, and run 2's attribution shows it throttled 100% and
+   restarting. emailservice's 500m limit became 30m and it restarted until it was unavailable. Its
+   steady-state usage was 3–4m, so the likely cause is startup CPU, which this setup does not measure.
+   Rightsized lowers requests and leaves limits alone.
+2. **HTTP errors are the wrong safety signal.** In both VPA runs the error rate stayed at 0% while
+   containers were throttled to 100% and crash-looped (adservice is optional to the frontend, so pages
+   still rendered). A guardrail on errors alone would have shipped it. `verify` also counts restarts
+   and unavailable deployments for this reason.
+3. **The p99 guardrail is tighter than the noise, and that is visible.** Rightsized's candidate missed
+   by 0.1 ms in run 1 and passed with 0.5 ms to spare in run 2; the baselines' own runs ranged
+   32–48 ms and 28–41 ms. A median-of-3 p99 with a 10% threshold will sometimes reject a harmless
+   change. The rule was not changed after run 1; replicating under the same rule was the test.
+4. **Requests reclaimed and nodes removed are different numbers.** On paper Rightsized's reclaimed
+   requests are worth ≈ $86–87/mo with every core and GiB priced as billable. The bin-packing simulation
+   says ≈ $140/mo, because whole nodes empty out. Neither is a measurement. Only a run with an autoscaler
+   and a bill ([docs/cloud-run.md](docs/cloud-run.md)) turns either into a real dollar figure.
+5. **The deliberate under-sizings did not fire.** adservice peaked at 88 Mi of its 256 Mi limit (no OOM),
+   and currencyservice's throttling (≈ 2–5% across runs) stayed around the 5% warning threshold. Its CPU request
+   was lowered while its 100m limit was kept. At this load the guessed values were not as wrong as intended.
 
 ## Honesty section
 

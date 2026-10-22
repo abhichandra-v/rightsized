@@ -1,0 +1,18 @@
+{
+  "oom_events": 0,
+  "max_throttle_ratio": 1.0,
+  "restarts": 6,
+  "unavailable_deployments": [
+    "boutique/emailservice"
+  ],
+  "nodes": 4,
+  "top_throttled": {
+    "boutique/adservice-866dd467d-8mpnh/server": 1.0,
+    "boutique/emailservice-74db7fbbdb-cjp9m/server": 0.9721,
+    "boutique/currencyservice-6d5c9659c6-x66mb/server": 0.2005
+  },
+  "top_restarts": {
+    "boutique/emailservice-74db7fbbdb-cjp9m/server": 4.093,
+    "boutique/adservice-866dd467d-8mpnh/server": 2.0465
+  }
+}

@@ -1,0 +1,243 @@
+LAST SEEN   TYPE      REASON              OBJECT                                        MESSAGE
+47m         Normal    SuccessfulCreate    replicaset/cartservice-54465dd647             Created pod: cartservice-54465dd647-2ddtn
+47m         Normal    SuccessfulCreate    replicaset/adservice-866dd467d                Created pod: adservice-866dd467d-8mpnh
+47m         Normal    ScalingReplicaSet   deployment/adservice                          Scaled up replica set adservice-866dd467d to 1
+47m         Normal    Scheduled           pod/cartservice-54465dd647-2ddtn              Successfully assigned boutique/cartservice-54465dd647-2ddtn to rightsized-worker2
+47m         Normal    Scheduled           pod/currencyservice-6d5c9659c6-x66mb          Successfully assigned boutique/currencyservice-6d5c9659c6-x66mb to rightsized-worker2
+47m         Normal    ScalingReplicaSet   deployment/checkoutservice                    Scaled up replica set checkoutservice-6dbf74774 to 1
+47m         Normal    SuccessfulCreate    replicaset/paymentservice-75c89bbc8b          Created pod: paymentservice-75c89bbc8b-tplrx
+47m         Normal    SuccessfulCreate    replicaset/emailservice-74db7fbbdb            Created pod: emailservice-74db7fbbdb-cjp9m
+47m         Normal    ScalingReplicaSet   deployment/emailservice                       Scaled up replica set emailservice-74db7fbbdb to 1
+47m         Normal    SuccessfulCreate    replicaset/checkoutservice-6dbf74774          Created pod: checkoutservice-6dbf74774-khxns
+47m         Normal    Scheduled           pod/emailservice-74db7fbbdb-cjp9m             Successfully assigned boutique/emailservice-74db7fbbdb-cjp9m to rightsized-worker2
+47m         Normal    Scheduled           pod/checkoutservice-6dbf74774-khxns           Successfully assigned boutique/checkoutservice-6dbf74774-khxns to rightsized-worker2
+47m         Normal    Scheduled           pod/paymentservice-75c89bbc8b-tplrx           Successfully assigned boutique/paymentservice-75c89bbc8b-tplrx to rightsized-worker3
+47m         Normal    SuccessfulCreate    replicaset/currencyservice-6d5c9659c6         Created pod: currencyservice-6d5c9659c6-x66mb
+47m         Normal    SuccessfulCreate    replicaset/frontend-6564bbcdb9                Created pod: frontend-6564bbcdb9-vxf6x
+47m         Normal    ScalingReplicaSet   deployment/paymentservice                     Scaled up replica set paymentservice-75c89bbc8b to 1
+47m         Normal    Scheduled           pod/adservice-866dd467d-8mpnh                 Successfully assigned boutique/adservice-866dd467d-8mpnh to rightsized-worker2
+47m         Normal    ScalingReplicaSet   deployment/cartservice                        Scaled up replica set cartservice-54465dd647 to 1
+47m         Normal    Scheduled           pod/frontend-6564bbcdb9-vxf6x                 Successfully assigned boutique/frontend-6564bbcdb9-vxf6x to rightsized-worker3
+47m         Normal    SuccessfulCreate    replicaset/productcatalogservice-6b8ff6966b   Created pod: productcatalogservice-6b8ff6966b-qvp6x
+47m         Normal    ScalingReplicaSet   deployment/productcatalogservice              Scaled up replica set productcatalogservice-6b8ff6966b to 1
+47m         Normal    ScalingReplicaSet   deployment/currencyservice                    Scaled up replica set currencyservice-6d5c9659c6 to 1
+47m         Normal    ScalingReplicaSet   deployment/frontend                           Scaled up replica set frontend-6564bbcdb9 to 1
+47m         Normal    Pulled              pod/recommendationservice-5996cdd476-glvmp    Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/recommendationservice:v0.10.2" already present on machine
+47m         Normal    Scheduled           pod/redis-cart-5b86ddbc7c-25cl8               Successfully assigned boutique/redis-cart-5b86ddbc7c-25cl8 to rightsized-worker3
+47m         Normal    ScalingReplicaSet   deployment/shippingservice                    Scaled up replica set shippingservice-d7c66947d to 1
+47m         Normal    Scheduled           pod/recommendationservice-5996cdd476-glvmp    Successfully assigned boutique/recommendationservice-5996cdd476-glvmp to rightsized-worker3
+47m         Normal    Pulling             pod/adservice-866dd467d-8mpnh                 Pulling image "us-central1-docker.pkg.dev/google-samples/microservices-demo/adservice:v0.10.2"
+47m         Normal    SuccessfulCreate    replicaset/shippingservice-d7c66947d          Created pod: shippingservice-d7c66947d-gcpxn
+47m         Normal    Pulling             pod/emailservice-74db7fbbdb-cjp9m             Pulling image "us-central1-docker.pkg.dev/google-samples/microservices-demo/emailservice:v0.10.2"
+47m         Normal    Scheduled           pod/shippingservice-d7c66947d-gcpxn           Successfully assigned boutique/shippingservice-d7c66947d-gcpxn to rightsized-worker2
+47m         Normal    Created             pod/recommendationservice-5996cdd476-glvmp    Created container server
+47m         Normal    Created             pod/currencyservice-6d5c9659c6-x66mb          Created container server
+47m         Normal    SuccessfulCreate    replicaset/redis-cart-5b86ddbc7c              Created pod: redis-cart-5b86ddbc7c-25cl8
+47m         Normal    Created             pod/productcatalogservice-6b8ff6966b-qvp6x    Created container server
+47m         Normal    ScalingReplicaSet   deployment/redis-cart                         Scaled up replica set redis-cart-5b86ddbc7c to 1
+47m         Normal    SuccessfulCreate    replicaset/recommendationservice-5996cdd476   Created pod: recommendationservice-5996cdd476-glvmp
+47m         Normal    Pulling             pod/frontend-6564bbcdb9-vxf6x                 Pulling image "us-central1-docker.pkg.dev/google-samples/microservices-demo/frontend:v0.10.2"
+47m         Normal    Pulled              pod/productcatalogservice-6b8ff6966b-qvp6x    Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/productcatalogservice:v0.10.2" already present on machine
+47m         Normal    Scheduled           pod/productcatalogservice-6b8ff6966b-qvp6x    Successfully assigned boutique/productcatalogservice-6b8ff6966b-qvp6x to rightsized-worker2
+47m         Normal    ScalingReplicaSet   deployment/recommendationservice              Scaled up replica set recommendationservice-5996cdd476 to 1
+47m         Normal    Pulled              pod/currencyservice-6d5c9659c6-x66mb          Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/currencyservice:v0.10.2" already present on machine
+47m         Normal    Started             pod/recommendationservice-5996cdd476-glvmp    Started container server
+47m         Normal    Pulled              pod/frontend-6564bbcdb9-vxf6x                 Successfully pulled image "us-central1-docker.pkg.dev/google-samples/microservices-demo/frontend:v0.10.2" in 1.337s (1.337s including waiting). Image size: 16924202 bytes.
+47m         Normal    ScalingReplicaSet   deployment/productcatalogservice              Scaled down replica set productcatalogservice-5d6fc8bc7d to 0 from 1
+47m         Normal    Pulled              pod/paymentservice-75c89bbc8b-tplrx           Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/paymentservice:v0.10.2" already present on machine
+47m         Normal    Pulling             pod/checkoutservice-6dbf74774-khxns           Pulling image "us-central1-docker.pkg.dev/google-samples/microservices-demo/checkoutservice:v0.10.2"
+47m         Normal    Created             pod/paymentservice-75c89bbc8b-tplrx           Created container server
+47m         Normal    Started             pod/currencyservice-6d5c9659c6-x66mb          Started container server
+47m         Normal    Killing             pod/productcatalogservice-5d6fc8bc7d-zzmh6    Stopping container server
+47m         Normal    SuccessfulDelete    replicaset/productcatalogservice-5d6fc8bc7d   Deleted pod: productcatalogservice-5d6fc8bc7d-zzmh6
+47m         Normal    Pulling             pod/shippingservice-d7c66947d-gcpxn           Pulling image "us-central1-docker.pkg.dev/google-samples/microservices-demo/shippingservice:v0.10.2"
+47m         Normal    Pulling             pod/redis-cart-5b86ddbc7c-25cl8               Pulling image "redis:alpine"
+47m         Normal    Started             pod/productcatalogservice-6b8ff6966b-qvp6x    Started container server
+47m         Normal    Started             pod/frontend-6564bbcdb9-vxf6x                 Started container server
+47m         Normal    Created             pod/frontend-6564bbcdb9-vxf6x                 Created container server
+47m         Warning   Unhealthy           pod/currencyservice-6d5c9659c6-x66mb          Readiness probe failed: timeout: failed to connect service "10.244.1.12:7000" within 1s: context deadline exceeded
+47m         Normal    Pulled              pod/adservice-866dd467d-8mpnh                 Successfully pulled image "us-central1-docker.pkg.dev/google-samples/microservices-demo/adservice:v0.10.2" in 2.876s (2.876s including waiting). Image size: 100256966 bytes.
+47m         Normal    Started             pod/paymentservice-75c89bbc8b-tplrx           Started container server
+47m         Normal    Created             pod/redis-cart-5b86ddbc7c-25cl8               Created container redis
+47m         Normal    Pulled              pod/redis-cart-5b86ddbc7c-25cl8               Successfully pulled image "redis:alpine" in 2.284s (2.458s including waiting). Image size: 39126067 bytes.
+47m         Normal    Started             pod/redis-cart-5b86ddbc7c-25cl8               Started container redis
+47m         Normal    Killing             pod/redis-cart-5bb667b74b-lrlwq               Stopping container redis
+47m         Normal    SuccessfulDelete    replicaset/redis-cart-5bb667b74b              Deleted pod: redis-cart-5bb667b74b-lrlwq
+47m         Normal    ScalingReplicaSet   deployment/redis-cart                         Scaled down replica set redis-cart-5bb667b74b to 0 from 1
+47m         Normal    Pulled              pod/emailservice-74db7fbbdb-cjp9m             Successfully pulled image "us-central1-docker.pkg.dev/google-samples/microservices-demo/emailservice:v0.10.2" in 4.939s (7.791s including waiting). Image size: 84312275 bytes.
+47m         Warning   Unhealthy           pod/redis-cart-5bb667b74b-lrlwq               Readiness probe failed: dial tcp 10.244.3.3:6379: connect: connection refused
+47m         Normal    Created             pod/checkoutservice-6dbf74774-khxns           Created container server
+47m         Normal    Pulled              pod/checkoutservice-6dbf74774-khxns           Successfully pulled image "us-central1-docker.pkg.dev/google-samples/microservices-demo/checkoutservice:v0.10.2" in 1.657s (9.356s including waiting). Image size: 11532736 bytes.
+47m         Normal    Killing             pod/currencyservice-b47dcb68f-24kjn           Stopping container server
+47m         Normal    SuccessfulDelete    replicaset/currencyservice-b47dcb68f          Deleted pod: currencyservice-b47dcb68f-24kjn
+47m         Normal    ScalingReplicaSet   deployment/currencyservice                    Scaled down replica set currencyservice-b47dcb68f to 0 from 1
+47m         Normal    Pulled              pod/shippingservice-d7c66947d-gcpxn           Successfully pulled image "us-central1-docker.pkg.dev/google-samples/microservices-demo/shippingservice:v0.10.2" in 1.153s (9.824s including waiting). Image size: 11148068 bytes.
+47m         Warning   Unhealthy           pod/recommendationservice-5996cdd476-glvmp    Liveness probe failed: timeout: failed to connect service "10.244.2.10:8080" within 1s: context deadline exceeded
+47m         Normal    Started             pod/checkoutservice-6dbf74774-khxns           Started container server
+47m         Warning   Unhealthy           pod/recommendationservice-5996cdd476-glvmp    Readiness probe failed: timeout: failed to connect service "10.244.2.10:8080" within 1s: context deadline exceeded
+47m         Normal    Created             pod/shippingservice-d7c66947d-gcpxn           Created container server
+47m         Warning   Unhealthy           pod/paymentservice-75c89bbc8b-tplrx           Readiness probe failed: timeout: failed to connect service "10.244.2.9:50051" within 1s: context deadline exceeded
+47m         Warning   Unhealthy           pod/paymentservice-75c89bbc8b-tplrx           Liveness probe failed: timeout: failed to connect service "10.244.2.9:50051" within 1s: context deadline exceeded
+47m         Normal    SuccessfulDelete    replicaset/checkoutservice-6476c8c74          Deleted pod: checkoutservice-6476c8c74-zmnbj
+47m         Normal    ScalingReplicaSet   deployment/shippingservice                    Scaled down replica set shippingservice-674cb8bb7f to 0 from 1
+47m         Normal    Started             pod/shippingservice-d7c66947d-gcpxn           Started container server
+47m         Normal    Killing             pod/checkoutservice-6476c8c74-zmnbj           Stopping container server
+47m         Normal    SuccessfulDelete    replicaset/shippingservice-674cb8bb7f         Deleted pod: shippingservice-674cb8bb7f-489k8
+47m         Normal    Killing             pod/shippingservice-674cb8bb7f-489k8          Stopping container server
+47m         Warning   Unhealthy           pod/checkoutservice-6dbf74774-khxns           Readiness probe failed: timeout: failed to connect service "10.244.1.11:5050" within 1s: context deadline exceeded
+47m         Normal    ScalingReplicaSet   deployment/checkoutservice                    Scaled down replica set checkoutservice-6476c8c74 to 0 from 1
+47m         Normal    SuccessfulDelete    replicaset/recommendationservice-65d76895d5   Deleted pod: recommendationservice-65d76895d5-cl6g6
+47m         Normal    ScalingReplicaSet   deployment/recommendationservice              Scaled down replica set recommendationservice-65d76895d5 to 0 from 1
+47m         Normal    Killing             pod/recommendationservice-65d76895d5-cl6g6    Stopping container server
+47m         Normal    Killing             pod/paymentservice-5fdcbd9ff5-gh4t7           Stopping container server
+47m         Normal    Killing             pod/frontend-86947c4855-sjslg                 Stopping container server
+47m         Normal    SuccessfulCreate    replicaset/frontend-6564bbcdb9                Created pod: frontend-6564bbcdb9-9l6lg
+47m         Normal    SuccessfulDelete    replicaset/paymentservice-5fdcbd9ff5          Deleted pod: paymentservice-5fdcbd9ff5-gh4t7
+47m         Normal    Created             pod/frontend-6564bbcdb9-9l6lg                 Created container server
+47m         Normal    Pulled              pod/frontend-6564bbcdb9-9l6lg                 Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/frontend:v0.10.2" already present on machine
+47m         Normal    ScalingReplicaSet   deployment/frontend                           Scaled up replica set frontend-6564bbcdb9 to 2 from 1
+47m         Normal    ScalingReplicaSet   deployment/frontend                           Scaled down replica set frontend-86947c4855 to 1 from 2
+47m         Normal    Scheduled           pod/frontend-6564bbcdb9-9l6lg                 Successfully assigned boutique/frontend-6564bbcdb9-9l6lg to rightsized-worker
+47m         Normal    SuccessfulDelete    replicaset/frontend-86947c4855                Deleted pod: frontend-86947c4855-sjslg
+47m         Normal    ScalingReplicaSet   deployment/paymentservice                     Scaled down replica set paymentservice-5fdcbd9ff5 to 0 from 1
+47m         Normal    Started             pod/frontend-6564bbcdb9-9l6lg                 Started container server
+46m         Normal    Killing             pod/emailservice-74db7fbbdb-cjp9m             Container server failed liveness probe, will be restarted
+46m         Normal    Pulled              pod/emailservice-74db7fbbdb-cjp9m             Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/emailservice:v0.10.2" already present on machine
+46m         Normal    Created             pod/emailservice-74db7fbbdb-cjp9m             Created container server
+46m         Normal    Started             pod/emailservice-74db7fbbdb-cjp9m             Started container server
+46m         Normal    Killing             pod/frontend-86947c4855-tlnzk                 Stopping container server
+46m         Normal    SuccessfulDelete    replicaset/frontend-86947c4855                Deleted pod: frontend-86947c4855-tlnzk
+46m         Normal    ScalingReplicaSet   deployment/frontend                           Scaled down replica set frontend-86947c4855 to 0 from 1
+46m         Normal    ScalingReplicaSet   deployment/cartservice                        Scaled down replica set cartservice-7867cc76bb to 0 from 1
+46m         Normal    SuccessfulDelete    replicaset/cartservice-7867cc76bb             Deleted pod: cartservice-7867cc76bb-wv7xp
+46m         Warning   Unhealthy           pod/emailservice-74db7fbbdb-cjp9m             Readiness probe failed: timeout: failed to connect service "10.244.1.13:8080" within 1s: context deadline exceeded
+46m         Normal    Killing             pod/cartservice-7867cc76bb-wv7xp              Stopping container server
+46m         Normal    Started             pod/adservice-866dd467d-8mpnh                 Started container server
+46m         Normal    Killing             pod/cartservice-54465dd647-2ddtn              Container server failed liveness probe, will be restarted
+46m         Warning   Unhealthy           pod/cartservice-54465dd647-2ddtn              Readiness probe failed: timeout: health rpc did not complete within 1s
+46m         Warning   Unhealthy           pod/cartservice-54465dd647-2ddtn              Liveness probe failed: timeout: health rpc did not complete within 1s
+46m         Normal    Pulled              pod/cartservice-54465dd647-2ddtn              Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/cartservice:v0.10.2" already present on machine
+46m         Normal    Created             pod/cartservice-54465dd647-2ddtn              Created container server
+46m         Normal    Started             pod/cartservice-54465dd647-2ddtn              Started container server
+45m         Warning   Unhealthy           pod/cartservice-54465dd647-2ddtn              Liveness probe failed: timeout: failed to connect service "10.244.1.10:7070" within 1s: context deadline exceeded
+45m         Warning   Unhealthy           pod/cartservice-54465dd647-2ddtn              Readiness probe failed: timeout: failed to connect service "10.244.1.10:7070" within 1s: context deadline exceeded
+45m         Normal    Killing             pod/adservice-866dd467d-8mpnh                 Container server failed liveness probe, will be restarted
+45m         Warning   Unhealthy           pod/adservice-866dd467d-8mpnh                 Readiness probe failed: timeout: failed to connect service "10.244.1.9:9555" within 1s: context deadline exceeded
+45m         Normal    Created             pod/adservice-866dd467d-8mpnh                 Created container server
+42m         Normal    Pulled              pod/adservice-866dd467d-8mpnh                 Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/adservice:v0.10.2" already present on machine
+22m         Warning   Unhealthy           pod/emailservice-74db7fbbdb-cjp9m             Liveness probe failed: timeout: failed to connect service "10.244.1.13:8080" within 1s: context deadline exceeded
+12m         Warning   BackOff             pod/adservice-866dd467d-8mpnh                 Back-off restarting failed container server in pod adservice-866dd467d-8mpnh_boutique(8ba18879-35c3-4bab-8e4f-9cfc0b1ceeb0)
+10m         Normal    Killing             pod/emailservice-5bd47f874c-h5t2c             Stopping container server
+10m         Normal    ScalingReplicaSet   deployment/emailservice                       Scaled down replica set emailservice-5bd47f874c to 0 from 1
+10m         Normal    SuccessfulDelete    replicaset/emailservice-5bd47f874c            Deleted pod: emailservice-5bd47f874c-h5t2c
+7m10s       Warning   Unhealthy           pod/adservice-866dd467d-8mpnh                 Liveness probe failed: timeout: failed to connect service "10.244.1.9:9555" within 1s: context deadline exceeded
+2m23s       Normal    ScalingReplicaSet   deployment/cartservice                        Scaled up replica set cartservice-7867cc76bb to 1 from 0
+2m23s       Normal    Scheduled           pod/cartservice-7867cc76bb-brm89              Successfully assigned boutique/cartservice-7867cc76bb-brm89 to rightsized-worker
+2m23s       Normal    Scheduled           pod/currencyservice-b47dcb68f-tpdx5           Successfully assigned boutique/currencyservice-b47dcb68f-tpdx5 to rightsized-worker
+2m23s       Warning   BackOff             pod/emailservice-74db7fbbdb-cjp9m             Back-off restarting failed container server in pod emailservice-74db7fbbdb-cjp9m_boutique(1a3a44ab-7001-4b3e-afba-aed0f35076fb)
+2m23s       Normal    ScalingReplicaSet   deployment/checkoutservice                    Scaled up replica set checkoutservice-6476c8c74 to 1 from 0
+2m23s       Normal    SuccessfulCreate    replicaset/checkoutservice-6476c8c74          Created pod: checkoutservice-6476c8c74-jnlph
+2m23s       Normal    ScalingReplicaSet   deployment/adservice                          Scaled down replica set adservice-866dd467d to 0 from 1
+2m23s       Normal    SuccessfulCreate    replicaset/currencyservice-b47dcb68f          Created pod: currencyservice-b47dcb68f-tpdx5
+2m23s       Normal    ScalingReplicaSet   deployment/currencyservice                    Scaled up replica set currencyservice-b47dcb68f to 1 from 0
+2m23s       Normal    SuccessfulDelete    replicaset/adservice-866dd467d                Deleted pod: adservice-866dd467d-8mpnh
+2m23s       Normal    Scheduled           pod/checkoutservice-6476c8c74-jnlph           Successfully assigned boutique/checkoutservice-6476c8c74-jnlph to rightsized-worker2
+2m23s       Normal    SuccessfulCreate    replicaset/cartservice-7867cc76bb             Created pod: cartservice-7867cc76bb-brm89
+2m22s       Normal    Pulling             pod/currencyservice-b47dcb68f-tpdx5           Pulling image "us-central1-docker.pkg.dev/google-samples/microservices-demo/currencyservice:v0.10.2"
+2m22s       Normal    Created             pod/checkoutservice-6476c8c74-jnlph           Created container server
+2m22s       Normal    Scheduled           pod/emailservice-5bd47f874c-fnvvq             Successfully assigned boutique/emailservice-5bd47f874c-fnvvq to rightsized-worker2
+2m22s       Normal    ScalingReplicaSet   deployment/emailservice                       Scaled up replica set emailservice-5bd47f874c to 1 from 0
+2m22s       Normal    Scheduled           pod/frontend-86947c4855-brthj                 Successfully assigned boutique/frontend-86947c4855-brthj to rightsized-worker
+2m22s       Normal    Pulled              pod/emailservice-5bd47f874c-fnvvq             Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/emailservice:v0.10.2" already present on machine
+2m22s       Normal    Pulled              pod/checkoutservice-6476c8c74-jnlph           Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/checkoutservice:v0.10.2" already present on machine
+2m22s       Normal    SuccessfulCreate    replicaset/emailservice-5bd47f874c            Created pod: emailservice-5bd47f874c-fnvvq
+2m22s       Normal    Created             pod/emailservice-5bd47f874c-fnvvq             Created container server
+2m22s       Normal    Started             pod/checkoutservice-6476c8c74-jnlph           Started container server
+2m22s       Normal    SuccessfulCreate    replicaset/frontend-86947c4855                Created pod: frontend-86947c4855-brthj
+2m22s       Normal    ScalingReplicaSet   deployment/frontend                           Scaled up replica set frontend-86947c4855 to 1 from 0
+2m22s       Normal    Pulling             pod/cartservice-7867cc76bb-brm89              Pulling image "us-central1-docker.pkg.dev/google-samples/microservices-demo/cartservice:v0.10.2"
+2m22s       Normal    Started             pod/emailservice-5bd47f874c-fnvvq             Started container server
+2m21s       Normal    Pulled              pod/frontend-86947c4855-brthj                 Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/frontend:v0.10.2" already present on machine
+2m21s       Normal    Scheduled           pod/recommendationservice-65d76895d5-ttrvr    Successfully assigned boutique/recommendationservice-65d76895d5-ttrvr to rightsized-worker2
+2m21s       Normal    ScalingReplicaSet   deployment/redis-cart                         Scaled up replica set redis-cart-5bb667b74b to 1 from 0
+2m21s       Normal    ScalingReplicaSet   deployment/paymentservice                     Scaled up replica set paymentservice-5fdcbd9ff5 to 1 from 0
+2m21s       Normal    ScalingReplicaSet   deployment/recommendationservice              Scaled up replica set recommendationservice-65d76895d5 to 1 from 0
+2m21s       Normal    Scheduled           pod/productcatalogservice-5d6fc8bc7d-g94g8    Successfully assigned boutique/productcatalogservice-5d6fc8bc7d-g94g8 to rightsized-worker3
+2m21s       Normal    Pulling             pod/productcatalogservice-5d6fc8bc7d-g94g8    Pulling image "us-central1-docker.pkg.dev/google-samples/microservices-demo/productcatalogservice:v0.10.2"
+2m21s       Normal    SuccessfulDelete    replicaset/checkoutservice-6dbf74774          Deleted pod: checkoutservice-6dbf74774-khxns
+2m21s       Normal    SuccessfulCreate    replicaset/recommendationservice-65d76895d5   Created pod: recommendationservice-65d76895d5-ttrvr
+2m21s       Normal    Killing             pod/checkoutservice-6dbf74774-khxns           Stopping container server
+2m21s       Normal    SuccessfulCreate    replicaset/paymentservice-5fdcbd9ff5          Created pod: paymentservice-5fdcbd9ff5-t62fg
+2m21s       Normal    SuccessfulCreate    replicaset/redis-cart-5bb667b74b              Created pod: redis-cart-5bb667b74b-4hqmx
+2m21s       Normal    SuccessfulCreate    replicaset/productcatalogservice-5d6fc8bc7d   Created pod: productcatalogservice-5d6fc8bc7d-g94g8
+2m21s       Normal    Pulling             pod/recommendationservice-65d76895d5-ttrvr    Pulling image "us-central1-docker.pkg.dev/google-samples/microservices-demo/recommendationservice:v0.10.2"
+2m21s       Normal    ScalingReplicaSet   deployment/checkoutservice                    Scaled down replica set checkoutservice-6dbf74774 to 0 from 1
+2m21s       Normal    Created             pod/frontend-86947c4855-brthj                 Created container server
+2m21s       Normal    Pulling             pod/paymentservice-5fdcbd9ff5-t62fg           Pulling image "us-central1-docker.pkg.dev/google-samples/microservices-demo/paymentservice:v0.10.2"
+2m21s       Normal    Started             pod/frontend-86947c4855-brthj                 Started container server
+2m21s       Normal    Scheduled           pod/paymentservice-5fdcbd9ff5-t62fg           Successfully assigned boutique/paymentservice-5fdcbd9ff5-t62fg to rightsized-worker2
+2m21s       Normal    Started             pod/cartservice-7867cc76bb-brm89              Started container server
+2m21s       Normal    Created             pod/cartservice-7867cc76bb-brm89              Created container server
+2m21s       Normal    Scheduled           pod/redis-cart-5bb667b74b-4hqmx               Successfully assigned boutique/redis-cart-5bb667b74b-4hqmx to rightsized-worker
+2m21s       Normal    ScalingReplicaSet   deployment/productcatalogservice              Scaled up replica set productcatalogservice-5d6fc8bc7d to 1 from 0
+2m21s       Normal    Pulled              pod/cartservice-7867cc76bb-brm89              Successfully pulled image "us-central1-docker.pkg.dev/google-samples/microservices-demo/cartservice:v0.10.2" in 1.54s (1.54s including waiting). Image size: 16981073 bytes.
+2m20s       Normal    ScalingReplicaSet   deployment/shippingservice                    Scaled up replica set shippingservice-674cb8bb7f to 1 from 0
+2m20s       Normal    ScalingReplicaSet   deployment/emailservice                       Scaled down replica set emailservice-74db7fbbdb to 0 from 1
+2m20s       Normal    Scheduled           pod/shippingservice-674cb8bb7f-trf6k          Successfully assigned boutique/shippingservice-674cb8bb7f-trf6k to rightsized-worker
+2m20s       Normal    SuccessfulCreate    replicaset/shippingservice-674cb8bb7f         Created pod: shippingservice-674cb8bb7f-trf6k
+2m20s       Normal    SuccessfulDelete    replicaset/emailservice-74db7fbbdb            Deleted pod: emailservice-74db7fbbdb-cjp9m
+2m20s       Normal    Pulled              pod/redis-cart-5bb667b74b-4hqmx               Container image "redis:alpine" already present on machine
+2m20s       Normal    Created             pod/shippingservice-674cb8bb7f-trf6k          Created container server
+2m20s       Warning   Unhealthy           pod/emailservice-5bd47f874c-fnvvq             Readiness probe failed: timeout: failed to connect service "10.244.1.17:8080" within 1s: context deadline exceeded
+2m20s       Normal    Pulled              pod/shippingservice-674cb8bb7f-trf6k          Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/shippingservice:v0.10.2" already present on machine
+2m20s       Normal    Created             pod/redis-cart-5bb667b74b-4hqmx               Created container redis
+2m19s       Normal    Started             pod/redis-cart-5bb667b74b-4hqmx               Started container redis
+2m19s       Normal    Killing             pod/redis-cart-5b86ddbc7c-25cl8               Stopping container redis
+2m19s       Normal    Started             pod/shippingservice-674cb8bb7f-trf6k          Started container server
+2m19s       Normal    ScalingReplicaSet   deployment/redis-cart                         Scaled down replica set redis-cart-5b86ddbc7c to 0 from 1
+2m19s       Normal    ScalingReplicaSet   deployment/shippingservice                    Scaled down replica set shippingservice-d7c66947d to 0 from 1
+2m19s       Normal    Started             pod/productcatalogservice-5d6fc8bc7d-g94g8    Started container server
+2m19s       Normal    Created             pod/productcatalogservice-5d6fc8bc7d-g94g8    Created container server
+2m19s       Normal    Pulled              pod/productcatalogservice-5d6fc8bc7d-g94g8    Successfully pulled image "us-central1-docker.pkg.dev/google-samples/microservices-demo/productcatalogservice:v0.10.2" in 1.753s (1.753s including waiting). Image size: 15076209 bytes.
+2m19s       Normal    Killing             pod/shippingservice-d7c66947d-gcpxn           Stopping container server
+2m19s       Normal    SuccessfulDelete    replicaset/redis-cart-5b86ddbc7c              Deleted pod: redis-cart-5b86ddbc7c-25cl8
+2m19s       Normal    SuccessfulDelete    replicaset/shippingservice-d7c66947d          Deleted pod: shippingservice-d7c66947d-gcpxn
+2m18s       Normal    Killing             pod/productcatalogservice-6b8ff6966b-qvp6x    Stopping container server
+2m18s       Normal    ScalingReplicaSet   deployment/productcatalogservice              Scaled down replica set productcatalogservice-6b8ff6966b to 0 from 1
+2m18s       Normal    SuccessfulDelete    replicaset/productcatalogservice-6b8ff6966b   Deleted pod: productcatalogservice-6b8ff6966b-qvp6x
+2m15s       Normal    Started             pod/currencyservice-b47dcb68f-tpdx5           Started container server
+2m15s       Normal    Created             pod/currencyservice-b47dcb68f-tpdx5           Created container server
+2m15s       Normal    Pulled              pod/currencyservice-b47dcb68f-tpdx5           Successfully pulled image "us-central1-docker.pkg.dev/google-samples/microservices-demo/currencyservice:v0.10.2" in 5.812s (7.098s including waiting). Image size: 41909187 bytes.
+2m15s       Normal    Pulled              pod/paymentservice-5fdcbd9ff5-t62fg           Successfully pulled image "us-central1-docker.pkg.dev/google-samples/microservices-demo/paymentservice:v0.10.2" in 5.5s (5.501s including waiting). Image size: 40473245 bytes.
+2m15s       Normal    Created             pod/paymentservice-5fdcbd9ff5-t62fg           Created container server
+2m15s       Normal    Started             pod/paymentservice-5fdcbd9ff5-t62fg           Started container server
+2m14s       Normal    Killing             pod/paymentservice-75c89bbc8b-tplrx           Stopping container server
+2m14s       Normal    ScalingReplicaSet   deployment/paymentservice                     Scaled down replica set paymentservice-75c89bbc8b to 0 from 1
+2m14s       Normal    SuccessfulDelete    replicaset/paymentservice-75c89bbc8b          Deleted pod: paymentservice-75c89bbc8b-tplrx
+2m14s       Warning   Unhealthy           pod/paymentservice-5fdcbd9ff5-t62fg           Readiness probe failed: timeout: failed to connect service "10.244.1.18:50051" within 1s: context deadline exceeded
+2m13s       Normal    Created             pod/recommendationservice-65d76895d5-ttrvr    Created container server
+2m13s       Normal    Started             pod/recommendationservice-65d76895d5-ttrvr    Started container server
+2m13s       Normal    Pulled              pod/recommendationservice-65d76895d5-ttrvr    Successfully pulled image "us-central1-docker.pkg.dev/google-samples/microservices-demo/recommendationservice:v0.10.2" in 2.21s (7.4s including waiting). Image size: 83680194 bytes.
+2m12s       Normal    ScalingReplicaSet   deployment/recommendationservice              Scaled down replica set recommendationservice-5996cdd476 to 0 from 1
+2m12s       Normal    Killing             pod/recommendationservice-5996cdd476-glvmp    Stopping container server
+2m12s       Normal    SuccessfulDelete    replicaset/recommendationservice-5996cdd476   Deleted pod: recommendationservice-5996cdd476-glvmp
+2m11s       Normal    ScalingReplicaSet   deployment/frontend                           Scaled up replica set frontend-86947c4855 to 2 from 1
+2m11s       Normal    Scheduled           pod/frontend-86947c4855-gxkwt                 Successfully assigned boutique/frontend-86947c4855-gxkwt to rightsized-worker3
+2m11s       Normal    ScalingReplicaSet   deployment/frontend                           Scaled down replica set frontend-6564bbcdb9 to 1 from 2
+2m11s       Warning   Unhealthy           pod/currencyservice-b47dcb68f-tpdx5           Liveness probe failed: timeout: failed to connect service "10.244.3.10:7000" within 1s: context deadline exceeded
+2m11s       Normal    SuccessfulCreate    replicaset/frontend-86947c4855                Created pod: frontend-86947c4855-gxkwt
+2m11s       Normal    Killing             pod/frontend-6564bbcdb9-9l6lg                 Stopping container server
+2m11s       Normal    Started             pod/frontend-86947c4855-gxkwt                 Started container server
+2m11s       Normal    SuccessfulDelete    replicaset/frontend-6564bbcdb9                Deleted pod: frontend-6564bbcdb9-9l6lg
+2m11s       Normal    Created             pod/frontend-86947c4855-gxkwt                 Created container server
+2m11s       Normal    Pulled              pod/frontend-86947c4855-gxkwt                 Container image "us-central1-docker.pkg.dev/google-samples/microservices-demo/frontend:v0.10.2" already present on machine
+2m10s       Warning   Unhealthy           pod/currencyservice-b47dcb68f-tpdx5           Readiness probe failed: timeout: failed to connect service "10.244.3.10:7000" within 1s: context deadline exceeded
+2m2s        Normal    ScalingReplicaSet   deployment/currencyservice                    Scaled down replica set currencyservice-6d5c9659c6 to 0 from 1
+2m2s        Normal    ScalingReplicaSet   deployment/cartservice                        Scaled down replica set cartservice-54465dd647 to 0 from 1
+2m2s        Normal    Killing             pod/currencyservice-6d5c9659c6-x66mb          Stopping container server
+2m2s        Normal    SuccessfulDelete    replicaset/cartservice-54465dd647             Deleted pod: cartservice-54465dd647-2ddtn
+2m2s        Normal    Killing             pod/cartservice-54465dd647-2ddtn              Stopping container server
+2m2s        Normal    SuccessfulDelete    replicaset/currencyservice-6d5c9659c6         Deleted pod: currencyservice-6d5c9659c6-x66mb
+2m1s        Normal    SuccessfulDelete    replicaset/frontend-6564bbcdb9                Deleted pod: frontend-6564bbcdb9-vxf6x
+2m1s        Normal    Killing             pod/frontend-6564bbcdb9-vxf6x                 Stopping container server
+2m1s        Normal    ScalingReplicaSet   deployment/frontend                           Scaled down replica set frontend-6564bbcdb9 to 0 from 1

@@ -1,0 +1,5 @@
+NAME                       STATUS   ROLES           AGE     VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION     CONTAINER-RUNTIME
+rightsized-control-plane   Ready    control-plane   3h14m   v1.31.0   172.18.0.3    <none>        Debian GNU/Linux 12 (bookworm)   7.0.0-1017-azure   containerd://1.7.18
+rightsized-worker          Ready    <none>          3h14m   v1.31.0   172.18.0.4    <none>        Debian GNU/Linux 12 (bookworm)   7.0.0-1017-azure   containerd://1.7.18
+rightsized-worker2         Ready    <none>          3h14m   v1.31.0   172.18.0.5    <none>        Debian GNU/Linux 12 (bookworm)   7.0.0-1017-azure   containerd://1.7.18
+rightsized-worker3         Ready    <none>          3h14m   v1.31.0   172.18.0.2    <none>        Debian GNU/Linux 12 (bookworm)   7.0.0-1017-azure   containerd://1.7.18
